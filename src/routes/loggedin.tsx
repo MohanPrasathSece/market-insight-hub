@@ -9,8 +9,8 @@ import c12 from "@/assets/c12.jpg";
 export const Route = createFileRoute("/loggedin")({
   head: () => ({
     meta: [
-      { title: "Partner & Investor Portal — Le Capital Moderne" },
-      { name: "description", content: "Access your private investor desk, view exclusive market analysis, and premium research reports." },
+      { title: "Market Intelligence & Research — Le Capital Moderne" },
+      { name: "description", content: "Access exclusive market analysis, daily bulletins, and premium crypto research reports." },
     ],
   }),
   component: LoggedInPortal,
@@ -65,13 +65,6 @@ const EXCLUSIVE_BULLETINS = [
 ];
 
 function LoggedInPortal() {
-  const [profile, setProfile] = useState({
-    name: "John Doe",
-    email: "partner.doe@gmail.com",
-    phone: "+44 7911 123456",
-    country: "cy"
-  });
-
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -90,14 +83,6 @@ function LoggedInPortal() {
     const nameParts = name.trim().split(/\s+/);
     const firstName = nameParts[0] || "";
     const lastName = nameParts.slice(1).join(" ") || "";
-
-    // Update local profile state to show persistence
-    setProfile({
-      name,
-      email,
-      phone,
-      country: "cy"
-    });
 
     const res = await submitToCRM({
       first_name: firstName,
@@ -129,14 +114,13 @@ function LoggedInPortal() {
               Le Capital <span className="italic text-[#B8860B]">Moderne</span>
             </a>
             <span className="hidden sm:inline-block px-2 py-0.5 bg-[#FFF8E5] text-[#B8860B] rounded text-[10px] uppercase font-bold tracking-wider border border-[#B8860B]/10">
-              Investor Portal
+              Intelligence Desk
             </span>
           </div>
-          <div className="flex items-center gap-4 text-[13px]">
-            <span className="text-gray-500">Welcome, <strong>{profile.name}</strong></span>
-            <a href="/" className="px-3 py-1.5 border border-[#E5E5E5] text-gray-700 hover:text-black hover:border-black transition-colors rounded">
-              Log Out
-            </a>
+          <div className="flex items-center gap-5 text-[13px]">
+            <a href="/" className="hover:text-[#B8860B] transition-colors">Home</a>
+            <a href="/register" className="hover:text-[#B8860B] transition-colors">Contact Desk</a>
+            <a href="/loggedin" className="hover:text-[#B8860B] transition-colors font-medium text-[#B8860B]">Market Research</a>
           </div>
         </div>
       </header>
@@ -144,55 +128,33 @@ function LoggedInPortal() {
       {/* Dashboard Content */}
       <main className="container-edit py-10 max-w-6xl">
         <div className="mb-8 border-b border-[#E5E5E5] pb-6">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B] font-medium">Private Investor Desk</p>
-          <h1 className="font-serif text-[40px] leading-tight text-[#111111] mt-2">Welcome Back, {profile.name}</h1>
-          <p className="mt-2 text-gray-500 text-[15px]">Access your premium research reports, check live market insights, and manage your private advisor communications.</p>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B] font-medium font-sans">Institutional Crypto Research</p>
+          <h1 className="font-serif text-[40px] leading-tight text-[#111111] mt-2">Market Intelligence &amp; Analysis</h1>
+          <p className="mt-2 text-gray-500 text-[15px]">Access premium macro analysis, on-chain briefings, and submit digital asset inquiries directly to our specialists.</p>
         </div>
 
         {/* Dashboard summary cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="bg-white border border-[#E5E5E5] p-6 rounded-lg shadow-sm">
-            <p className="text-xs uppercase tracking-wider text-gray-400 font-medium">Membership Level</p>
-            <p className="font-serif text-2xl text-[#111111] mt-2">Private Client</p>
-            <p className="text-xs text-green-700 font-semibold mt-1">✓ Premium Briefings Active</p>
+            <p className="text-xs uppercase tracking-wider text-gray-400 font-medium font-sans">BTC Market Dominance</p>
+            <p className="font-serif text-2xl text-[#111111] mt-2">57.4%</p>
+            <p className="text-xs text-[#B8860B] font-semibold mt-1">▲ +0.8% this week</p>
           </div>
           <div className="bg-white border border-[#E5E5E5] p-6 rounded-lg shadow-sm">
-            <p className="text-xs uppercase tracking-wider text-gray-400 font-medium">Dedicated Advisory Desk</p>
-            <p className="font-serif text-[18px] text-[#111111] mt-2">Swiss & Geneva Desk</p>
-            <p className="text-xs text-gray-500 mt-1">Contact: Alexander V. R.</p>
+            <p className="text-xs uppercase tracking-wider text-gray-400 font-medium font-sans">Total Digital Asset Valuation</p>
+            <p className="font-serif text-2xl text-[#111111] mt-2">$3.12 Trillion</p>
+            <p className="text-xs text-green-700 font-semibold mt-1">▲ +2.4% in 24h</p>
           </div>
           <div className="bg-white border border-[#E5E5E5] p-6 rounded-lg shadow-sm">
-            <p className="text-xs uppercase tracking-wider text-gray-400 font-medium">Access Status</p>
-            <p className="font-serif text-2xl text-[#B8860B] mt-2">Fully Unlocked</p>
-            <p className="text-xs text-gray-500 mt-1">Premium Research Feed Active</p>
+            <p className="text-xs uppercase tracking-wider text-gray-400 font-medium font-sans">Ethereum Network Gas</p>
+            <p className="font-serif text-2xl text-[#111111] mt-2">12 Gwei</p>
+            <p className="text-xs text-gray-500 mt-1">Status: Low Congestion</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left Side: Profile & Bulletins */}
+          {/* Left Side: Bulletins */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-white border border-[#E5E5E5] p-6 rounded-lg shadow-sm">
-              <h3 className="font-serif text-lg border-b border-[#E5E5E5] pb-3 mb-4">Account Information</h3>
-              <div className="space-y-4 text-[14px]">
-                <div>
-                  <span className="block text-[11px] text-gray-400 uppercase tracking-wide font-medium">Name</span>
-                  <span className="font-medium text-[#111111]">{profile.name}</span>
-                </div>
-                <div>
-                  <span className="block text-[11px] text-gray-400 uppercase tracking-wide font-medium">Email</span>
-                  <span className="font-medium text-[#111111]">{profile.email}</span>
-                </div>
-                <div>
-                  <span className="block text-[11px] text-gray-400 uppercase tracking-wide font-medium">Number</span>
-                  <span className="font-medium text-[#111111]">{profile.phone}</span>
-                </div>
-                <div>
-                  <span className="block text-[11px] text-gray-400 uppercase tracking-wide font-medium">Primary Registry</span>
-                  <span className="font-medium text-[#111111] uppercase">{profile.country}</span>
-                </div>
-              </div>
-            </div>
-
             <div className="bg-white border border-[#E5E5E5] p-6 rounded-lg shadow-sm">
               <div className="flex items-center justify-between mb-4 border-b border-[#E5E5E5] pb-2">
                 <h3 className="font-serif text-lg text-[#111111]">Advisory Bulletins</h3>
