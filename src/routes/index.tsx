@@ -1,18 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import hero from "@/assets/hero.jpg";
 import author from "@/assets/author.jpg";
-import thumb1 from "@/assets/thumb1.jpg";
-import thumb2 from "@/assets/thumb2.jpg";
-import thumb3 from "@/assets/thumb3.jpg";
-import thumb4 from "@/assets/thumb4.jpg";
+import c1 from "@/assets/c1.jpg";
+import c2 from "@/assets/c2.jpg";
+import c3 from "@/assets/c3.jpg";
+import c4 from "@/assets/c4.jpg";
+import c5 from "@/assets/c5.jpg";
+import c6 from "@/assets/c6.jpg";
+import c7 from "@/assets/c7.jpg";
+import c8 from "@/assets/c8.jpg";
+import c9 from "@/assets/c9.jpg";
+import c10 from "@/assets/c10.jpg";
+import c11 from "@/assets/c11.jpg";
+import c12 from "@/assets/c12.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "How Digital Assets Created New Wealth Opportunities — Market Frontier Journal" },
-      { name: "description", content: "A closer look at how emerging digital asset markets and technology investments transformed modern wealth creation." },
-      { property: "og:title", content: "How Digital Assets Created New Wealth Opportunities" },
-      { property: "og:description", content: "Market analysis and investor research from Market Frontier Journal." },
+      { title: "How Elon Musk Quietly Got Rich On Crypto — Market Frontier Journal" },
+      { name: "description", content: "Inside the unconventional crypto bets that turned the world's most public entrepreneur into one of digital finance's biggest winners." },
+      { property: "og:title", content: "How Elon Musk Quietly Got Rich On Crypto" },
+      { property: "og:description", content: "Inside the unconventional crypto bets behind Elon Musk's digital asset fortune." },
     ],
   }),
   component: Index,
@@ -24,95 +32,115 @@ const openProps = { href: R, target: "_blank", rel: "noopener noreferrer" } as c
 const NAV = ["Markets", "Business", "Technology", "Innovation", "Investing", "Digital Assets", "Economy", "Opinion", "Research", "Analysis", "Latest News", "Trending"];
 
 const TICKER = [
-  "Bitcoin reaches new institutional adoption milestone",
-  "AI trading platforms gain investor attention",
-  "Digital asset funds see record inflows",
-  "Global markets react to technology investments",
-  "Tokenised treasuries cross $4B in assets under management",
-  "Sovereign wealth funds expand AI portfolio allocations",
+  "Bitcoin reclaims $110K as institutional flows accelerate",
+  "Elon Musk's Tesla still holds 9,720 BTC on its balance sheet",
+  "Dogecoin jumps 14% after fresh Musk podcast comments",
+  "Spot Ethereum ETFs cross $30B in net inflows",
+  "Stablecoin market cap pushes past $260B",
+  "SpaceX rumoured to retain undisclosed BTC position since 2021",
+  "AI trading desks now account for 41% of crypto spot volume",
 ];
 
 const SIDEBAR = [
-  ["Trending", ["The new architecture of private wealth", "Why family offices are rotating into AI infrastructure", "Inside the rise of programmable capital markets", "The quiet boom in tokenised treasuries", "How algorithmic liquidity reshaped market structure"]],
-  ["Editor's Picks", ["A field guide to the next decade of finance", "The economist who saw the digital pivot coming", "Five frameworks for evaluating frontier assets", "When public markets stop setting the price", "The infrastructure layer no one is pricing"]],
-  ["Most Read", ["Why the next trillion is digital", "AI capex and the new industrial cycle", "Reading the curve: signals from the bond market", "The institutionalisation of alternative assets", "What pensions are buying in 2025"]],
-  ["Research Briefings", ["Digital asset allocation models, Q4", "Generative AI: capital intensity report", "Macro outlook and rate trajectory", "Sector rotation playbook", "Cross-border capital flows quarterly"]],
+  ["Trending", ["Inside Tesla's quiet bitcoin reaccumulation", "How Dogecoin became Musk's longest crypto bet", "The Twitter / X payments roadmap explained", "Why SpaceX is the most secretive whale on chain", "The Musk effect: measuring a tweet in basis points"]],
+  ["Editor's Picks", ["The billionaire crypto playbook — five lessons", "A field guide to corporate treasury bitcoin", "How retail followed Musk into Dogecoin", "When public markets stop setting the price", "The infrastructure layer no one is pricing"]],
+  ["Most Read", ["Bitcoin at $110K: what changes for portfolios", "Ethereum's quiet institutional moment", "The new economics of meme coins", "Stablecoins and the future of dollar dominance", "What family offices are buying this quarter"]],
+  ["Research Briefings", ["Digital asset allocation models, Q4", "Corporate treasury crypto report", "Macro outlook and rate trajectory", "On-chain flows: institutional dashboard", "Cross-border crypto settlement quarterly"]],
 ];
 
 const RELATED = [
-  { cat: "Markets", img: thumb1, title: "Why Volatility Is Becoming The New Asset Class", sum: "Institutional desks are repositioning around structural volatility regimes." },
-  { cat: "Technology", img: thumb2, title: "Inside The AI Capex Cycle Reshaping S&P Earnings", sum: "A look at how datacenter investment is rewriting margin expectations." },
-  { cat: "Digital Assets", img: thumb3, title: "Tokenised Treasuries Cross A Quiet Milestone", sum: "On-chain treasury products are pulling capital from traditional money markets." },
-  { cat: "Economy", img: thumb4, title: "The Long Decade: A New Macro Regime For Investors", sum: "Why the post-2024 cycle looks structurally different from the last fifteen years." },
-  { cat: "Analysis", img: thumb1, title: "Liquidity, Reflexivity And The Modern Trading Desk", sum: "How algorithmic flows have rewired equity market behaviour." },
-  { cat: "Innovation", img: thumb2, title: "The Quiet Reindustrialisation Of The American Economy", sum: "Capex, chips and the case for a manufacturing renaissance." },
-  { cat: "Investing", img: thumb3, title: "What Endowments Are Doing Differently This Cycle", sum: "Inside the playbook of the largest university endowments." },
-  { cat: "Markets", img: thumb4, title: "Private Credit's Coming Of Age — And Its Limits", sum: "The asset class that quietly became the third pillar of fixed income." },
-  { cat: "Technology", img: thumb1, title: "Generative AI Is Eating Software Margins", sum: "A sober look at where the value really accrues in the AI stack." },
-  { cat: "Research", img: thumb2, title: "Reading The Yield Curve In A Regime Of Fiscal Dominance", sum: "How sovereign issuance is overwhelming traditional macro signals." },
-  { cat: "Opinion", img: thumb3, title: "The Quiet Revolution In Cross-Border Settlement", sum: "Stablecoins, real-time rails and the end of correspondent banking." },
-  { cat: "Business", img: thumb4, title: "Why The Modern CFO Looks More Like A Portfolio Manager", sum: "Treasury, capital allocation and the new corporate playbook." },
+  { cat: "Bitcoin", img: c1, title: "Bitcoin At $110K: The Quiet Rerating Of A Reserve Asset", sum: "Institutional flows have rewritten the demand side of the bitcoin market." },
+  { cat: "Ethereum", img: c2, title: "Ethereum's Institutional Moment Has Finally Arrived", sum: "Spot ETFs, restaking and tokenised assets are reshaping the network's investor base." },
+  { cat: "Tesla", img: c3, title: "Why Tesla Is Still The Most Watched Crypto Treasury", sum: "Three years after its first BTC purchase, Tesla's balance sheet remains a benchmark." },
+  { cat: "SpaceX", img: c4, title: "Inside SpaceX's Long, Quiet Position In Bitcoin", sum: "What public filings reveal — and conceal — about Musk's most secretive bet." },
+  { cat: "Dogecoin", img: c5, title: "Dogecoin: How A Meme Became A Long-Duration Trade", sum: "The asset Musk has championed longest has quietly outperformed expectations." },
+  { cat: "Trading", img: c6, title: "Crypto Trading Desks Are Now Run Like Macro Funds", sum: "Inside the institutional turn at the world's largest digital asset venues." },
+  { cat: "AI", img: c7, title: "How AI Models Are Reshaping Crypto Market Structure", sum: "Algorithmic flows now drive a majority of spot volume on top exchanges." },
+  { cat: "Exchanges", img: c8, title: "The New Generation Of Regulated Crypto Venues", sum: "How custody, surveillance and compliance became the real moat." },
+  { cat: "Blockchain", img: c9, title: "Programmable Settlement Comes For Capital Markets", sum: "Tokenisation is finally moving from pilots to live institutional rails." },
+  { cat: "Markets", img: c10, title: "Bulls, Bears And Bitcoin: Reading The New Cycle", sum: "Why the 2026 cycle looks structurally different from the last." },
+  { cat: "NFTs", img: c11, title: "After The Hype: Where NFTs Quietly Found Real Use", sum: "From ticketing to brand loyalty, on-chain collectibles found a second act." },
+  { cat: "Retail", img: c12, title: "How Retail Investors Are Trading Crypto In 2026", sum: "Mobile-first platforms, copy trading and the new face of digital investing." },
 ];
 
 const SOCIAL = ["LinkedIn", "X", "Facebook", "YouTube", "Telegram", "Instagram"];
 
 const FOOTER_COLS: Array<[string, string[]]> = [
-  ["Sections", ["Markets", "Technology", "Research", "Business", "Economy", "Digital Assets", "Investment Guides"]],
-  ["Company", ["About", "Contact", "Newsletter", "Careers", "Advertise", "Editorial Standards"]],
-  ["Legal", ["Privacy", "Terms", "Cookies", "Disclosures", "Accessibility"]],
+  ["Sections", ["Markets", "Business", "Technology", "Innovation", "Investing", "Digital Assets", "Economy", "Opinion", "Research", "Analysis"]],
+  ["Crypto Coverage", ["Bitcoin", "Ethereum", "Stablecoins", "Dogecoin", "DeFi", "NFTs", "Tokenisation", "On-Chain Data", "Exchanges", "Mining"]],
+  ["Markets & Data", ["Live Quotes", "Crypto Heatmap", "ETF Tracker", "Corporate Treasuries", "Macro Calendar", "Earnings Calendar", "Commodities", "Rates & Bonds", "FX", "Indices"]],
+  ["Research", ["2026 Outlook", "Weekly Briefing", "Premium Reports", "Sector Models", "Allocation Tools", "Whitepapers", "Methodology", "Glossary", "Investor Education", "Webinars"]],
+  ["Company", ["About", "Editorial Team", "Newsroom", "Careers", "Press Office", "Investor Relations", "Editorial Standards", "Corrections", "Diversity Report", "Contact"]],
+  ["Account", ["Sign In", "Register", "Subscribe", "Newsletter", "Manage Subscription", "Group Subscriptions", "Student Access", "Gift Articles", "Apps", "RSS Feeds"]],
+  ["Partners", ["Advertise", "Sponsored Content", "Events & Summits", "Awards", "Syndication", "Licensing", "Affiliate Program", "Brand Studio", "Newsletters For Business", "Custom Research"]],
+  ["Legal", ["Privacy Policy", "Terms Of Service", "Cookie Settings", "Disclosures", "Accessibility", "Modern Slavery Statement", "Code Of Conduct", "Whistleblower", "Sitemap", "Help Centre"]],
 ];
 
 const SECTIONS: Array<{ h: string; p: string[] }> = [
   { h: "Introduction", p: [
-    "For most of the last decade, the conversation about wealth creation in technology was dominated by a familiar cast: venture capital, public equities, and the occasional founder-led IPO. That picture is beginning to look incomplete. Across institutional desks in London, New York and Singapore, a quieter shift is taking place — one in which digital assets, automated portfolios and artificial intelligence have moved from the fringes of finance to the centre of strategic asset allocation.",
-    "This article is not a forecast. It is a survey of how a generation of entrepreneurs, allocators and policymakers came to treat digital markets as a serious component of the investment landscape, and what that means for the next phase of capital formation.",
+    "When historians eventually write the financial biography of Elon Musk, the chapter on cryptocurrency may end up being the most surprising. For all of the public attention paid to Tesla's share price and SpaceX's private valuation, a quieter story has been unfolding on chain — one in which the world's most photographed entrepreneur has compounded a parallel digital asset fortune through a mixture of corporate treasury moves, personal positions and an unmatched ability to move markets with a single sentence.",
+    "This article is not a fan profile. It is a sober attempt, drawing on filings, on-chain analytics and conversations with people who have worked alongside him, to map how Musk became one of the largest indirect beneficiaries of the last crypto cycle — and why his next moves are being watched as closely as any central bank's.",
+  ]},
+  { h: "From Skeptic To Whale", p: [
+    "Musk's public posture on cryptocurrency has shifted more than once. In 2018 he dismissed bitcoin as a curiosity. By early 2021 Tesla had committed $1.5 billion of corporate cash to BTC, briefly making it the most-followed corporate treasury position in the world. The reversal was not casual; it followed months of internal modelling on inflation, dollar debasement and what Musk's finance team began referring to in slide decks as 'optionality on a non-sovereign reserve.'",
+    "Although Tesla later sold a portion of that position, the residual holding — most recently disclosed at 9,720 BTC — has done most of the work. At today's prices, that single line item is worth more than the company's entire Q1 2021 net income.",
+  ]},
+  { h: "The Tesla Treasury Trade", p: [
+    "The Tesla bitcoin purchase was, in retrospect, less a punt than a balance-sheet experiment. It tested whether a S&P 500 company could custody, mark and disclose a volatile digital asset without losing investor trust. The answer, eventually, was yes — and that quiet operational success has since been replicated by a growing list of corporate treasuries.",
+    "For Musk personally, the trade had a second-order benefit. It re-priced the public's perception of bitcoin as a legitimate corporate asset, and in doing so it lifted the value of every digital asset associated with him.",
   ]},
   { h: "The Evolution Of Digital Finance", p: [
-    "Digital finance did not arrive in a single moment. It accumulated, in a series of overlapping cycles, each leaving behind durable infrastructure: payment rails, custody standards, regulatory frameworks. What once looked like speculative noise is now embedded in the plumbing of global markets.",
-    "The most consequential change is structural. For the first time, a parallel set of settlement systems exists alongside the traditional banking stack, capable of moving value across borders in seconds and at marginal cost.",
+    "Musk's crypto bets did not arrive in a vacuum. They tracked the broader maturation of digital finance: custody standards approaching institutional grade, regulators reluctantly accepting that the asset class was not going away, and a generation of allocators willing to underwrite the operational risk.",
+    "The most consequential change is structural. For the first time, a parallel settlement system exists alongside the traditional banking stack — and Musk, through SpaceX and X, is one of the few operators positioned at the intersection of payments, identity and on-chain value.",
   ]},
-  { h: "How Technology Changed Investing", p: [
-    "The retail investor of 2025 has tools that were available only to hedge funds a decade ago: real-time data, algorithmic execution, fractional ownership of nearly every public asset, and a growing menu of private market exposures.",
-    "Institutions, in turn, have absorbed the lessons of the platform era. Allocation decisions that once took quarters now take days. Portfolios are rebalanced continuously. Risk is measured in seconds.",
+  { h: "The Dogecoin Position", p: [
+    "If bitcoin was the institutional trade, Dogecoin has been the cultural one. Musk's affinity for DOGE — repeatedly disclosed, often joked about, never quite walked back — has turned a meme coin into a long-duration narrative asset.",
+    "On any rational valuation framework Dogecoin should not exist. Yet the asset's market capitalisation has held within a remarkably stable band, and Musk's personal holdings (the subject of multiple class action settlements he ultimately prevailed in) have compounded with it.",
   ]},
-  { h: "The Rise Of Digital Assets", p: [
-    "Digital assets are no longer a single category. They span tokenised treasuries, stablecoins, infrastructure tokens, and a long tail of programmable instruments that behave more like software than like securities.",
-    "What unites them is a common technical substrate — and a growing willingness among institutional allocators to treat that substrate as investable.",
+  { h: "SpaceX And The Quietest Whale On Chain", p: [
+    "SpaceX is privately held and discloses little. What it has disclosed, in passing, is that it acquired bitcoin in 2021 and wrote down a portion in 2022. On-chain analysts have long suspected the residual position is meaningful; some estimates place it above 8,000 BTC.",
+    "If those estimates are even directionally correct, SpaceX is one of the largest non-exchange holders of bitcoin in the world — a quiet whale moving in lockstep with the personal convictions of its founder.",
   ]},
-  { h: "The Role Of AI In Modern Markets", p: [
-    "Artificial intelligence has reshaped two layers of the investment process: research and execution. On the research side, large models are being used to parse filings, transcripts and alternative data sets at a scale that was previously impossible.",
-    "On the execution side, AI-driven systems are quietly absorbing a growing share of order flow, particularly in equities and foreign exchange.",
+  { h: "The Twitter / X Payments Roadmap", p: [
+    "The 2022 acquisition of Twitter, since rebranded as X, gave Musk something more valuable than a megaphone: a regulated payments rail. The company has spent the last eighteen months quietly accumulating money transmitter licences across U.S. states, and has signalled that crypto rails will form part of its eventual settlement stack.",
+    "If X executes even half of its payments ambitions, it becomes one of the few consumer surfaces capable of moving digital assets at scale — and Musk one of the few founders to own both the asset and the distribution.",
+  ]},
+  { h: "The Musk Effect On Markets", p: [
+    "Academic studies have now quantified what traders long suspected: a single Musk tweet can move bitcoin and dogecoin prices in measurable, sometimes multi-percent, increments. The 'Musk effect' is no longer anecdotal. It is a documented feature of market microstructure that desks at major venues now actively hedge.",
+    "For Musk himself, this creates an unusual second-order asset: optionality on his own voice. The value of his personal book is correlated with his willingness to comment.",
   ]},
   { h: "Investor Behaviour", p: [
-    "The behavioural shift is just as important as the technological one. A new generation of investors — many of whom began with digital assets — now expect transparency, programmability and twenty-four hour liquidity as baseline features of any financial product.",
-    "Traditional firms have responded by rebuilding their client experience from the ground up.",
+    "Musk's crypto journey has also reshaped retail behaviour. A generation of investors who came of age trading Tesla on Robinhood made the natural jump to Coinbase, and from there to dogecoin and beyond. The data is unambiguous: brokerage accounts that hold TSLA are dramatically more likely to also hold BTC, ETH or DOGE than the market average.",
   ]},
   { h: "Market Trends", p: [
-    "Three trends stand out. First, a steady migration of fixed income activity onto tokenised rails. Second, the institutionalisation of crypto-native instruments through regulated wrappers. Third, the quiet expansion of private credit into asset classes once dominated by banks.",
+    "Three trends now matter most for Musk's digital asset portfolio: continued institutional adoption of bitcoin via spot ETFs, the maturation of ethereum as a settlement layer for tokenised assets, and the gradual integration of crypto rails into mainstream consumer payments.",
   ]},
   { h: "Institutional Participation", p: [
-    "The institutional story is no longer about whether large allocators will engage with digital markets, but how. Pension funds, sovereign wealth vehicles and insurance balance sheets are now active participants in segments of the market that, only five years ago, they would have dismissed as uninvestable.",
+    "Five years ago, the idea that a sovereign wealth fund might hold bitcoin was treated as a thought experiment. Today it is policy at several. The institutional cohort that once viewed Musk's Tesla treasury experiment as reckless now treats it as a precedent.",
   ]},
   { h: "Technology Entrepreneurs", p: [
-    "For technology entrepreneurs, the implications are profound. Capital formation no longer follows a single template. A founder today can raise from venture investors, tokenise revenue streams, or access global pools of liquidity through structured digital instruments.",
+    "For technology entrepreneurs watching from the sidelines, the lesson of Musk's crypto returns is not 'buy bitcoin.' It is that operators who control distribution, brand and a willingness to underwrite balance-sheet experiments can capture an outsized share of the returns from a new asset class.",
+  ]},
+  { h: "The Role Of AI In Modern Markets", p: [
+    "Musk's parallel investments in artificial intelligence — xAI, the rebuilt compute clusters at Tesla, and the lingering equity stake from his early role at OpenAI — increasingly overlap with the crypto stack. AI-driven trading desks now handle a meaningful share of digital asset volume, and Musk sits closer than any other founder to both ends of that trade.",
   ]},
   { h: "Future Outlook", p: [
-    "The next decade is likely to be defined less by the arrival of new assets than by the maturation of the infrastructure that supports them. Custody, compliance and settlement — the unglamorous middle of the stack — will determine which products scale and which remain niche.",
+    "Where does the Musk crypto story go from here? Most plausibly: deeper integration. The payments rails inside X, the treasury policies at Tesla, the unspoken position at SpaceX, and the AI infrastructure at xAI are converging on a single thesis — that programmable money will be the substrate of the next generation of consumer and capital markets technology.",
   ]},
   { h: "Expert Commentary", p: [
-    "“We are at the point where the question is no longer whether digital assets belong in an institutional portfolio,” one chief investment officer told this publication, “but how to size the allocation responsibly.” That sentiment, once contrarian, is now broadly shared across the industry.",
+    "“Elon's real edge in crypto was never timing,” one fund manager who has tracked his positions since 2021 told this publication. “It was that he was willing to put a public balance sheet behind a private conviction at a moment when nobody else would.”",
   ]},
   { h: "Risk Considerations", p: [
-    "None of this should be read as an absence of risk. Liquidity in digital markets remains uneven. Regulatory regimes are still converging. Operational risk — particularly around custody and key management — continues to be a meaningful concern for serious allocators.",
+    "None of this should be read as an endorsement of any single position. Liquidity in digital markets remains uneven. Regulatory regimes are still converging. The same volatility that has rewarded Musk's positions has also wiped out less patient capital. Concentration risk — particularly around any single named founder — is a feature of this market, not a bug.",
   ]},
   { h: "Market Forecast", p: [
-    "Our base case for the coming year is one of continued, measured institutionalisation. Flows into regulated digital asset products are expected to accelerate, while the broader macro environment remains shaped by the trajectory of real rates and fiscal policy.",
+    "Our base case for the coming year is one of continued, measured institutionalisation, with bitcoin and ethereum capturing the bulk of regulated inflows. Dogecoin, the asset most directly tied to Musk personally, will likely continue to trade more on narrative than on fundamentals.",
   ]},
   { h: "Innovation Roadmap", p: [
-    "Three areas warrant close attention: programmable money market instruments, AI-native portfolio construction tools, and the gradual on-chaining of traditional capital markets activity. Each is likely to compound over the next several cycles.",
+    "Three areas warrant close attention: stablecoin-based consumer payments inside super-apps such as X, AI-native portfolio construction tools that draw on on-chain data, and the gradual on-chaining of corporate treasuries beyond the early Tesla template.",
   ]},
   { h: "Conclusion", p: [
-    "The story of digital assets and technology-driven wealth is, at its core, a story about infrastructure. The headlines will continue to focus on price. The more durable shift is the one taking place beneath the surface, in the systems that now quietly move trillions of dollars between investors, institutions and ideas.",
+    "The story of Elon Musk and crypto is, at its core, a story about the convergence of brand, balance sheet and conviction. The headlines will continue to focus on price. The more durable shift is the one taking place quietly across his portfolio, and across the institutions that increasingly take their cues from it.",
   ]},
 ];
 
