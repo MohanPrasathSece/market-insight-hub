@@ -169,63 +169,7 @@ function LoggedInPortal() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left: Recommended Articles & Bulletins */}
-          <div className="lg:col-span-8 space-y-10">
-            <div>
-              <div className="flex items-center justify-between mb-6 border-b border-[#E5E5E5] pb-3">
-                <h2 className="font-serif text-2xl text-[#111111]">Recommended Research Reports</h2>
-                <span className="text-xs text-[#B8860B] uppercase tracking-wider font-semibold">Exclusive Member Feed</span>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {RECOMMENDED_ARTICLES.map((article) => (
-                  <div key={article.id} className="bg-white border border-[#E5E5E5] rounded-lg overflow-hidden flex flex-col group hover:shadow-md transition-shadow">
-                    <div className="h-44 overflow-hidden relative">
-                      <img src={article.img} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <span className="absolute top-3 left-3 bg-[#111111] text-white text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded">
-                        {article.tag}
-                      </span>
-                    </div>
-                    <div className="p-5 flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-2">
-                          <span>{article.readTime}</span>
-                        </div>
-                        <h3 className="font-serif text-[18px] leading-snug text-[#111111] group-hover:text-[#B8860B] transition-colors">
-                          {article.title}
-                        </h3>
-                        <p className="mt-2 text-xs text-gray-500 leading-relaxed">
-                          {article.desc}
-                        </p>
-                      </div>
-                      <div className="mt-4 pt-4 border-t border-[#F5F5F3] flex items-center justify-between text-xs font-semibold text-[#111111]">
-                        <span className="group-hover:text-[#B8860B] transition-colors">Read Full Report</span>
-                        <span className="group-hover:translate-x-1 transition-transform">→</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between mb-6 border-b border-[#E5E5E5] pb-3">
-                <h2 className="font-serif text-2xl text-[#111111]">Exclusive Advisory Bulletins</h2>
-                <span className="text-xs text-[#B8860B] uppercase tracking-wider font-semibold font-mono">Live Briefings</span>
-              </div>
-              <div className="space-y-4">
-                {EXCLUSIVE_BULLETINS.map((b) => (
-                  <div key={b.title} className="bg-white border border-[#E5E5E5] p-5 rounded-lg">
-                    <p className="text-[10px] text-[#B8860B] uppercase tracking-wider font-semibold">{b.date}</p>
-                    <h3 className="font-serif text-[17px] mt-1 text-[#111111]">{b.title}</h3>
-                    <p className="mt-2 text-xs text-gray-500 leading-relaxed">{b.summary}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Profile & Contact Form */}
+          {/* Left Side: Profile & Bulletins */}
           <div className="lg:col-span-4 space-y-6">
             <div className="bg-white border border-[#E5E5E5] p-6 rounded-lg shadow-sm">
               <h3 className="font-serif text-lg border-b border-[#E5E5E5] pb-3 mb-4">Account Information</h3>
@@ -250,56 +194,117 @@ function LoggedInPortal() {
             </div>
 
             <div className="bg-white border border-[#E5E5E5] p-6 rounded-lg shadow-sm">
-              <h3 className="font-serif text-lg border-b border-[#E5E5E5] pb-3 mb-4">Message Advisory Desk</h3>
-              {submitted ? (
-                <div className="text-center py-6 bg-[#FAFAF8] border border-dashed border-[#E5E5E5] rounded">
-                  <div className="mx-auto w-10 h-10 rounded-full bg-[#FFF8E5] flex items-center justify-center mb-3">
-                    <span className="text-[#B8860B] text-lg">✓</span>
+              <div className="flex items-center justify-between mb-4 border-b border-[#E5E5E5] pb-2">
+                <h3 className="font-serif text-lg text-[#111111]">Advisory Bulletins</h3>
+                <span className="text-[9px] text-[#B8860B] uppercase tracking-wider font-semibold font-mono">Live</span>
+              </div>
+              <div className="space-y-4">
+                {EXCLUSIVE_BULLETINS.map((b) => (
+                  <div key={b.title} className="border-b border-[#F5F5F3] pb-4 last:border-b-0 last:pb-0">
+                    <p className="text-[9px] text-[#B8860B] uppercase tracking-wider font-semibold">{b.date}</p>
+                    <h4 className="font-serif text-sm mt-0.5 text-[#111111]">{b.title}</h4>
+                    <p className="mt-1 text-xs text-gray-500 leading-relaxed">{b.summary}</p>
                   </div>
-                  <p className="text-sm font-serif text-[#111111] font-medium">Inquiry Received</p>
-                  <p className="mt-1 text-xs text-gray-500">We will respond within 24 hours.</p>
-                  <button onClick={() => setSubmitted(false)} className="mt-4 px-3 py-1.5 bg-[#111111] text-white text-[11px] uppercase tracking-wider hover:bg-[#B8860B] transition-colors rounded">
-                    Send Another Message
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side / Center: Main Contact Form */}
+          <div className="lg:col-span-8">
+            <div className="bg-white border border-[#E5E5E5] p-8 rounded-lg shadow-sm">
+              <div className="mb-6">
+                <h2 className="font-serif text-2xl text-[#111111]">Contact Form</h2>
+                <p className="text-sm text-gray-500 mt-1">Please fill out this form to contact us.</p>
+              </div>
+
+              {submitted ? (
+                <div className="text-center py-12 bg-[#FAFAF8] border border-dashed border-[#E5E5E5] rounded">
+                  <div className="mx-auto w-12 h-12 rounded-full bg-[#FFF8E5] flex items-center justify-center mb-4">
+                    <span className="text-[#B8860B] text-xl">✓</span>
+                  </div>
+                  <h4 className="font-serif text-xl text-[#111111]">Inquiry Received</h4>
+                  <p className="mt-2 text-sm text-gray-500">We have received your message and will get back to you shortly.</p>
+                  <button onClick={() => setSubmitted(false)} className="mt-6 px-4 py-2 bg-[#111111] text-white text-xs uppercase tracking-wider hover:bg-[#B8860B] transition-colors rounded">
+                    Submit Another Message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleCaseSubmit} className="space-y-4">
+                <form onSubmit={handleCaseSubmit} className="space-y-6">
                   {error && (
-                    <div className="p-2 bg-red-50 text-red-600 rounded text-xs text-center border border-red-100 font-medium">
+                    <div className="p-3 bg-red-50 text-red-600 rounded text-sm text-center border border-red-100 font-medium">
                       {error}
                     </div>
                   )}
 
                   <div>
-                    <label className="block text-[11px] font-medium tracking-wide text-[#111111] mb-1">Name</label>
-                    <input type="text" name="name" required className="w-full h-9 px-3 bg-white border border-[#E5E5E5] text-[13px] outline-none focus:border-[#B8860B] transition rounded" />
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Name</label>
+                    <input type="text" name="name" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-medium tracking-wide text-[#111111] mb-1">Email</label>
-                    <input type="email" name="email" required className="w-full h-9 px-3 bg-white border border-[#E5E5E5] text-[13px] outline-none focus:border-[#B8860B] transition rounded" />
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Email</label>
+                    <input type="email" name="email" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-medium tracking-wide text-[#111111] mb-1">Number</label>
-                    <input type="tel" name="phone" required className="w-full h-9 px-3 bg-white border border-[#E5E5E5] text-[13px] outline-none focus:border-[#B8860B] transition rounded" />
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Number</label>
+                    <input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-medium tracking-wide text-[#111111] mb-1">Message</label>
-                    <textarea name="message" required rows={3} placeholder="Message" className="w-full p-2 bg-white border border-[#E5E5E5] text-[13px] outline-none focus:border-[#B8860B] transition resize-none rounded"></textarea>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Message</label>
+                    <textarea name="message" required rows={4} placeholder="Message" className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none rounded"></textarea>
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full h-10 bg-[#111111] text-white text-[12px] uppercase tracking-[0.2em] hover:bg-[#B8860B] disabled:bg-gray-400 transition-colors flex items-center justify-center gap-2 rounded"
+                    className="w-full h-12 bg-[#111111] text-white text-[13px] uppercase tracking-[0.2em] hover:bg-[#B8860B] disabled:bg-gray-400 transition-colors flex items-center justify-center gap-2 rounded"
                   >
                     {loading ? "Submitting..." : "Submit"}
                   </button>
                 </form>
               )}
             </div>
+          </div>
+        </div>
+
+        {/* Recommended Research Reports */}
+        <div className="mt-16 border-t border-[#E5E5E5] pt-12">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="font-serif text-3xl text-[#111111]">Recommended Research Reports</h2>
+            <span className="text-xs text-[#B8860B] uppercase tracking-wider font-semibold">Exclusive Member Feed</span>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {RECOMMENDED_ARTICLES.map((article) => (
+              <div key={article.id} className="bg-white border border-[#E5E5E5] rounded-lg overflow-hidden flex flex-col group hover:shadow-md transition-shadow">
+                <div className="h-40 overflow-hidden relative">
+                  <img src={article.img} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <span className="absolute top-3 left-3 bg-[#111111] text-white text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded">
+                    {article.tag}
+                  </span>
+                </div>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-2">
+                      <span>{article.readTime}</span>
+                    </div>
+                    <h3 className="font-serif text-[17px] leading-snug text-[#111111] group-hover:text-[#B8860B] transition-colors">
+                      {article.title}
+                    </h3>
+                    <p className="mt-2 text-xs text-gray-500 leading-relaxed">
+                      {article.desc}
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-[#F5F5F3] flex items-center justify-between text-xs font-semibold text-[#111111]">
+                    <span className="group-hover:text-[#B8860B] transition-colors">Read Full Report</span>
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </main>
