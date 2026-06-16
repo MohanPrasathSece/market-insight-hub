@@ -234,7 +234,7 @@ function Index() {
         <div className="container-edit flex items-center justify-between py-2">
           <span className="tracking-wide">Tuesday, June 16, 2026 · International Edition</span>
           <div className="hidden md:flex items-center gap-5">
-            <a href="/register" className="hover:text-[#B8860B] transition-colors">Subscribe</a>
+            <a href="/register" className="hover:text-[#B8860B] transition-colors">Contact Desk</a>
             <a href="/loggedin" className="hover:text-[#B8860B] transition-colors font-medium text-[#B8860B]">Sign In</a>
             <a href="/register" className="hover:text-[#B8860B] transition-colors">Newsletter</a>
           </div>

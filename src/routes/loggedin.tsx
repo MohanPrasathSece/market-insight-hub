@@ -228,7 +228,7 @@ function LoggedInPortal() {
           <p>© {new Date().getFullYear()} Le Capital Moderne · Secure Portal Desk</p>
           <div className="flex gap-4">
             <a href="/" className="hover:text-black">Home Page</a>
-            <a href="/register" className="hover:text-black">Register</a>
+            <a href="/register" className="hover:text-black">Contact Desk</a>
           </div>
         </div>
       </footer>

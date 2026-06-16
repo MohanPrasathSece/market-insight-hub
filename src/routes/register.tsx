@@ -11,10 +11,10 @@ import c8 from "@/assets/c8.jpg";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Investor Access Registration — Le Capital Moderne" },
-      { name: "description", content: "Create your free investor account to access market analysis, crypto research reports, and digital asset insights." },
-      { property: "og:title", content: "Investor Access Registration" },
-      { property: "og:description", content: "Create your free investor account." },
+      { title: "Contact Our Private Advisory Desk — Le Capital Moderne" },
+      { name: "description", content: "Submit a secure case inquiry to our private advisory desk. A representative will review and respond confidentially." },
+      { property: "og:title", content: "Private Advisory Desk Contact Form" },
+      { property: "og:description", content: "Submit a secure case inquiry to Le Capital Moderne." },
     ],
   }),
   component: RegisterPage,
@@ -28,19 +28,19 @@ const COVERAGE = [
 ];
 
 const STATS = [
-  ["260K+", "Daily readers"],
-  ["50+", "Crypto analysts"],
-  ["12yr", "Editorial history"],
-  ["140", "Countries served"],
+  ["24h", "Response target"],
+  ["100%", "Secure & private"],
+  ["ISO 27001", "Controls matched"],
+  ["Cyprus/Swiss", "Desks active"],
 ];
 
 const PERKS = [
-  "Daily crypto and macro briefings",
-  "On-chain analytics dashboard",
-  "Premium research reports",
-  "Live institutional flow tracker",
-  "Exclusive investor webinars",
-  "Saved articles and watchlists",
+  "Confidential advisory review",
+  "Direct connection to specialists",
+  "No third-party data distribution",
+  "Strict data privacy standards",
+  "Direct phone support channels",
+  "Full alignment with local regulations",
 ];
 
 const TICKERS = [
@@ -106,7 +106,7 @@ function RegisterPage() {
           <a href="/" className="font-serif text-xl tracking-tight text-[#111111]">
             Le Capital <span className="italic text-[#B8860B]">Moderne</span>
           </a>
-          <span className="text-xs uppercase tracking-[0.18em] text-[#555555]">Investor Access</span>
+          <span className="text-xs uppercase tracking-[0.18em] text-[#555555]">Confidential Desk</span>
         </div>
         {/* Live ticker */}
         <div className="border-t border-[#E5E5E5] bg-[#FAFAF7]">
@@ -128,12 +128,12 @@ function RegisterPage() {
         <section className="container-edit py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start animate-fade-up">
           {/* Left column: context */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Investor Access</p>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Private Desk Contact</p>
             <h1 className="font-serif text-[44px] md:text-[52px] leading-[1.05] text-[#111111] mt-4">
-              Join the global desk reading Le Capital Moderne on crypto.
+              Submit a Secure Case Inquiry
             </h1>
             <p className="mt-5 text-[16px] leading-relaxed text-[#555555]">
-              Free access to our daily briefings, on-chain analytics and the crypto research that institutional desks read first.
+              Outline your inquiry or project scope. All data is securely transmitted directly to our client management CRM under strict access controls.
             </p>
 
             <ul className="mt-8 space-y-3">
@@ -159,8 +159,8 @@ function RegisterPage() {
           <div className="lg:col-span-7">
             <div className="bg-white rounded-xl shadow-[0_8px_40px_rgba(17,17,17,0.08)] border border-[#EEEEEE] p-8 sm:p-10 mx-auto" style={{ maxWidth: 560 }}>
               <div className="text-center mb-8">
-                <h2 className="font-serif text-[34px] leading-[1.15] text-[#111111]">Create Your Free Investor Account</h2>
-                <p className="mt-3 text-[15px] text-[#555555]">Access market analysis, crypto research reports, and digital asset insights.</p>
+                <h2 className="font-serif text-[34px] leading-[1.15] text-[#111111]">Contact Form</h2>
+                <p className="mt-3 text-[15px] text-[#555555]">Please fill out this form to contact us.</p>
               </div>
 
               {submitted ? (
@@ -168,8 +168,8 @@ function RegisterPage() {
                   <div className="mx-auto w-12 h-12 rounded-full bg-[#FFF8E5] flex items-center justify-center mb-4">
                     <span className="text-[#B8860B] text-xl">✓</span>
                   </div>
-                  <h3 className="font-serif text-2xl text-[#111111]">Welcome aboard</h3>
-                  <p className="mt-2 text-sm text-[#555555]">Your investor account request has been received. Check your inbox to confirm your email.</p>
+                  <h3 className="font-serif text-2xl text-[#111111]">Inquiry Received</h3>
+                  <p className="mt-2 text-sm text-[#555555]">We have received your message and will get back to you shortly.</p>
                 </div>
               ) : (
                 <form
@@ -206,14 +206,14 @@ function RegisterPage() {
                     {loading ? (
                       <>
                         <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                        Registering...
+                        Submitting...
                       </>
                     ) : (
-                      "Create Investor Account"
+                      "Submit"
                     )}
                   </button>
                   <p className="text-[12px] text-[#555555] text-center leading-relaxed">
-                    By registering, you agree to the Le Capital Moderne Terms and Privacy Policy.
+                    By submitting, you agree to the Le Capital Moderne Terms and Privacy Policy.
                   </p>
                 </form>
               )}
