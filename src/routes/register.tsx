@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import c1 from "@/assets/c1.jpg";
+import { submitToCRM } from "@/lib/crm";
 import c2 from "@/assets/c2.jpg";
 import c3 from "@/assets/c3.jpg";
 import c5 from "@/assets/c5.jpg";
@@ -59,6 +60,42 @@ const FAQ = [
 
 function RegisterPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const country = formData.get("country") as string;
+    const interest = (e.currentTarget.querySelector("select") as HTMLSelectElement).value;
+
+    const res = await submitToCRM({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone,
+      country_name: country,
+      description: `Registered for Investor Access with interest: ${interest}`,
+      source_id: "registration_page",
+      how_much_invested: "0",
+      outline_your_case: `Interested in: ${interest}`
+    });
+
+    setLoading(false);
+    if (res.success) {
+      setSubmitted(true);
+    } else {
+      setError(res.error || "Failed to submit. Please try again.");
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#FAFAFA", fontFamily: "var(--font-sans)" }}>
       {/* Header */}
@@ -134,12 +171,14 @@ function RegisterPage() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSubmitted(true);
-                  }}
+                  onSubmit={handleSubmit}
                   className="space-y-5"
                 >
+                  {error && (
+                    <div className="p-3 bg-red-50 text-red-600 rounded-md text-sm text-center font-medium border border-red-100">
+                      {error}
+                    </div>
+                  )}
                   <div className="grid grid-cols-2 gap-4">
                     <Field label="First Name" name="firstName" />
                     <Field label="Last Name" name="lastName" />
@@ -167,15 +206,23 @@ function RegisterPage() {
                       <option>Business</option>
                     </select>
                   </div>
-                  <label className="flex items-start gap-2 text-[12px] text-[#555555] leading-relaxed">
+                  <label className="flex items-start gap-2 text-[12px] text-[#555555] leading-relaxed animate-pulse-slow">
                     <input type="checkbox" defaultChecked className="mt-0.5 accent-[#B8860B]" />
                     Send me the weekly Le Capital Moderne Crypto Briefing.
                   </label>
                   <button
                     type="submit"
-                    className="w-full h-12 rounded-md bg-[#111111] text-white text-[14px] font-medium tracking-wide hover:bg-[#B8860B] transition-colors duration-300"
+                    disabled={loading}
+                    className="w-full h-12 rounded-md bg-[#111111] text-white text-[14px] font-medium tracking-wide hover:bg-[#B8860B] disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center gap-2"
                   >
-                    Create Investor Account
+                    {loading ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                        Registering...
+                      </>
+                    ) : (
+                      "Create Investor Account"
+                    )}
                   </button>
                   <p className="text-[12px] text-[#555555] text-center leading-relaxed">
                     By registering, you agree to the Le Capital Moderne Terms and Privacy Policy.
@@ -185,7 +232,7 @@ function RegisterPage() {
             </div>
 
             <p className="text-center text-[12px] text-[#555555] mt-6">
-              Already a subscriber? <a href="#" className="text-[#B8860B] hover:underline">Sign in</a>
+              Already a subscriber? <a href="/loggedin" className="text-[#B8860B] hover:underline">Sign in</a>
             </p>
           </div>
         </section>

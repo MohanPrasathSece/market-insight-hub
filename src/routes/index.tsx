@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { submitToCRM } from "@/lib/crm";
 import hero from "@/assets/hero.jpg";
 import author from "@/assets/author.jpg";
 import c1 from "@/assets/c1.jpg";
@@ -145,6 +147,82 @@ const SECTIONS: Array<{ h: string; p: string[] }> = [
 ];
 
 function Index() {
+  // Newsletter form states
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const [newsletterLoading, setNewsletterLoading] = useState(false);
+  const [newsletterError, setNewsletterError] = useState("");
+
+  // Contact form states
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [contactLoading, setContactLoading] = useState(false);
+  const [contactError, setContactError] = useState("");
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setNewsletterLoading(true);
+    setNewsletterError("");
+    
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+
+    const res = await submitToCRM({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone,
+      country_name: "cy",
+      description: "Subscribed to Le Capital Moderne newsletter briefing from home page",
+      source_id: "newsletter_home",
+      how_much_invested: "0",
+      outline_your_case: "Newsletter subscriber"
+    });
+
+    setNewsletterLoading(false);
+    if (res.success) {
+      setNewsletterSubmitted(true);
+    } else {
+      setNewsletterError(res.error || "Failed to submit. Please try again.");
+    }
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setContactLoading(true);
+    setContactError("");
+    
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const country = formData.get("country") as string;
+    const investedAmount = formData.get("investedAmount") as string;
+    const sourceId = formData.get("sourceId") as string;
+    const caseDetails = formData.get("caseDetails") as string;
+
+    const res = await submitToCRM({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone,
+      country_name: country,
+      description: `Case submission: ${caseDetails}`,
+      source_id: sourceId,
+      how_much_invested: investedAmount,
+      outline_your_case: caseDetails
+    });
+
+    setContactLoading(false);
+    if (res.success) {
+      setContactSubmitted(true);
+    } else {
+      setContactError(res.error || "Failed to submit. Please try again.");
+    }
+  };
+
   return (
     <div className="bg-white text-[#111111]" style={{ fontFamily: "var(--font-sans)" }}>
       {/* Top utility bar */}
@@ -152,9 +230,9 @@ function Index() {
         <div className="container-edit flex items-center justify-between py-2">
           <span className="tracking-wide">Tuesday, June 16, 2026 · International Edition</span>
           <div className="hidden md:flex items-center gap-5">
-            <a {...openProps} className="hover:text-[#B8860B]">Subscribe</a>
-            <a {...openProps} className="hover:text-[#B8860B]">Sign In</a>
-            <a {...openProps} className="hover:text-[#B8860B]">Newsletter</a>
+            <a href="/register" className="hover:text-[#B8860B] transition-colors">Subscribe</a>
+            <a href="/loggedin" className="hover:text-[#B8860B] transition-colors font-medium text-[#B8860B]">Sign In</a>
+            <a href="/register" className="hover:text-[#B8860B] transition-colors">Newsletter</a>
           </div>
         </div>
       </div>
@@ -367,24 +445,164 @@ function Index() {
             Receive weekly insights and market analysis from the Le Capital Moderne editorial desk.
           </p>
           <form
-            onSubmit={(e) => { e.preventDefault(); window.open(R, "_blank", "noopener,noreferrer"); }}
-            className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+            onSubmit={handleNewsletterSubmit}
+            className="mt-8 flex flex-col gap-3 max-w-md mx-auto"
           >
-            <input
-              type="email"
-              placeholder="your@email.com"
-              required
-              className="flex-1 h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
-            />
-            <button type="submit" className="h-12 px-6 bg-[#111111] text-white text-[13px] uppercase tracking-[0.2em] hover:bg-[#B8860B] transition-colors">
-              Subscribe
-            </button>
+            {newsletterSubmitted ? (
+              <div className="p-3 bg-[#FFF8E5] text-[#B8860B] text-sm font-medium rounded-md border border-[#B8860B]/20">
+                ✓ Successfully subscribed! Your lead details are logged in our secure CRM.
+              </div>
+            ) : (
+              <>
+                {newsletterError && (
+                  <div className="p-3 bg-red-50 text-red-600 border border-red-100 text-sm font-medium rounded-md">
+                    {newsletterError}
+                  </div>
+                )}
+                <div className="grid grid-cols-2 gap-3">
+                  <input
+                    type="text"
+                    name="firstName"
+                    placeholder="First Name"
+                    required
+                    className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
+                  />
+                  <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    required
+                    className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
+                  />
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                  className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  required
+                  className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
+                />
+                <button type="submit" disabled={newsletterLoading} className="h-12 px-6 bg-[#111111] text-white text-[13px] uppercase tracking-[0.2em] hover:bg-[#B8860B] disabled:bg-gray-400 transition-colors flex items-center justify-center gap-2">
+                  {newsletterLoading ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                      Subscribing...
+                    </>
+                  ) : (
+                    "Subscribe & Access Briefing"
+                  )}
+                </button>
+              </>
+            )}
           </form>
           <div className="mt-10 flex justify-center gap-6 text-[12px] uppercase tracking-[0.2em] text-[#555555]">
             {SOCIAL.map((s) => (
               <a key={s} {...openProps} className="hover:text-[#B8860B]">{s}</a>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Contact & Case Outline Form */}
+      <section className="bg-[#FAFAF7] border-t border-[#E5E5E5]">
+        <div className="container-edit py-20 max-w-4xl mx-auto animate-fade-up">
+          <div className="text-center mb-12">
+            <p className="text-[11px] uppercase tracking-[0.28em] text-[#B8860B]">Private Desk</p>
+            <h3 className="font-serif text-[40px] leading-tight mt-3">Outline Your Case Details</h3>
+            <p className="mt-4 text-[16px] text-[#555555] leading-relaxed max-w-xl mx-auto">
+              Submit your case details directly to our digital asset desks. A private client manager will review and respond within 24 hours.
+            </p>
+          </div>
+
+          <form onSubmit={handleContactSubmit} className="bg-white p-8 sm:p-10 border border-[#E5E5E5] shadow-sm space-y-6">
+            {contactSubmitted ? (
+              <div className="text-center py-12">
+                <div className="mx-auto w-12 h-12 rounded-full bg-[#FFF8E5] flex items-center justify-center mb-4">
+                  <span className="text-[#B8860B] text-xl">✓</span>
+                </div>
+                <h4 className="font-serif text-2xl text-[#111111]">Case Submitted Successfully</h4>
+                <p className="mt-2 text-sm text-[#555555]">Your case has been logged in our secure CRM. A representative will contact you shortly.</p>
+              </div>
+            ) : (
+              <>
+                {contactError && (
+                  <div className="p-3 bg-red-50 text-red-600 rounded-md text-sm text-center border border-red-100">
+                    {contactError}
+                  </div>
+                )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">First Name</label>
+                    <input type="text" name="firstName" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Last Name</label>
+                    <input type="text" name="lastName" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Email Address</label>
+                    <input type="email" name="email" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Phone Number</label>
+                    <input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Country Code (e.g. cy, ch)</label>
+                    <input type="text" name="country" placeholder="cy" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">How Much Do You Wish to Invest ($)?</label>
+                    <input type="number" name="investedAmount" placeholder="10000" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Source ID / Channel</label>
+                    <input type="text" name="sourceId" placeholder="fb" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Topic (e.g. crypto, business)</label>
+                    <input type="text" name="topic" placeholder="crypto" required defaultValue="crypto" className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Outline Your Case / Message</label>
+                  <textarea name="caseDetails" required rows={4} placeholder="Outline your case details, investment timeline, or general inquiries..." className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none"></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={contactLoading}
+                  className="w-full h-12 bg-[#111111] text-white text-[13px] uppercase tracking-[0.2em] hover:bg-[#B8860B] disabled:bg-gray-400 transition-colors flex items-center justify-center gap-2"
+                >
+                  {contactLoading ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                      Submitting Case...
+                    </>
+                  ) : (
+                    "Submit Case Details"
+                  )}
+                </button>
+              </>
+            )}
+          </form>
         </div>
       </section>
 
