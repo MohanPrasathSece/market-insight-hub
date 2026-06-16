@@ -11,8 +11,9 @@ export interface CRMLeadData {
 }
 
 export async function submitToCRM(data: CRMLeadData): Promise<{ success: boolean; error?: string }> {
-  const url = "https://inwo.crmcore.me/api/lead_management/api/affiliates";
-  const token = "AFF_1_92cbc1bc76284e19b711bab22587d75f";
+  // Use environment variables or fallback values
+  const url = import.meta.env.VITE_CRM_URL || "https://inwo.crmcore.me/api/lead_management/api/affiliates";
+  const token = import.meta.env.VITE_CRM_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
 
   const payload = {
     first_name: data.first_name,
@@ -38,7 +39,6 @@ export async function submitToCRM(data: CRMLeadData): Promise<{ success: boolean
       body: JSON.stringify(payload)
     });
 
-    // CRM might return no response body or error
     if (response.ok) {
       return { success: true };
     } else {

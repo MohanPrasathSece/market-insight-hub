@@ -163,10 +163,14 @@ function Index() {
     setNewsletterError("");
     
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
+    const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
+    const message = formData.get("message") as string;
+
+    const nameParts = name.trim().split(/\s+/);
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
 
     const res = await submitToCRM({
       first_name: firstName,
@@ -174,10 +178,10 @@ function Index() {
       email: email,
       phone: phone,
       country_name: "cy",
-      description: "Subscribed to Le Capital Moderne newsletter briefing from home page",
+      description: message || "Subscribed to Le Capital Moderne newsletter",
       source_id: "newsletter_home",
       how_much_invested: "0",
-      outline_your_case: "Newsletter subscriber"
+      outline_your_case: message || "Newsletter subscriber"
     });
 
     setNewsletterLoading(false);
@@ -194,25 +198,25 @@ function Index() {
     setContactError("");
     
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
+    const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
-    const country = formData.get("country") as string;
-    const investedAmount = formData.get("investedAmount") as string;
-    const sourceId = formData.get("sourceId") as string;
-    const caseDetails = formData.get("caseDetails") as string;
+    const message = formData.get("message") as string;
+
+    const nameParts = name.trim().split(/\s+/);
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
 
     const res = await submitToCRM({
       first_name: firstName,
       last_name: lastName,
       email: email,
       phone: phone,
-      country_name: country,
-      description: `Case submission: ${caseDetails}`,
-      source_id: sourceId,
-      how_much_invested: investedAmount,
-      outline_your_case: caseDetails
+      country_name: "cy",
+      description: message,
+      source_id: "contact_home",
+      how_much_invested: "0",
+      outline_your_case: message
     });
 
     setContactLoading(false);
@@ -459,35 +463,33 @@ function Index() {
                     {newsletterError}
                   </div>
                 )}
-                <div className="grid grid-cols-2 gap-3">
-                  <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    required
-                    className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
-                  />
-                  <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    required
-                    className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
-                  />
-                </div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  required
+                  className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
+                />
                 <input
                   type="email"
                   name="email"
-                  placeholder="your@email.com"
+                  placeholder="Email"
                   required
                   className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
                 />
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="Phone Number"
+                  placeholder="Number"
                   required
                   className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
+                />
+                <textarea
+                  name="message"
+                  placeholder="Msg"
+                  required
+                  rows={2}
+                  className="p-3 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition resize-none"
                 />
                 <button type="submit" disabled={newsletterLoading} className="h-12 px-6 bg-[#111111] text-white text-[13px] uppercase tracking-[0.2em] hover:bg-[#B8860B] disabled:bg-gray-400 transition-colors flex items-center justify-center gap-2">
                   {newsletterLoading ? (
@@ -537,53 +539,24 @@ function Index() {
                     {contactError}
                   </div>
                 )}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">First Name</label>
-                    <input type="text" name="firstName" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                  </div>
-                  <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Last Name</label>
-                    <input type="text" name="lastName" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Email Address</label>
-                    <input type="email" name="email" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                  </div>
-                  <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Phone Number</label>
-                    <input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Country Code (e.g. cy, ch)</label>
-                    <input type="text" name="country" placeholder="cy" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                  </div>
-                  <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">How Much Do You Wish to Invest ($)?</label>
-                    <input type="number" name="investedAmount" placeholder="10000" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Source ID / Channel</label>
-                    <input type="text" name="sourceId" placeholder="fb" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                  </div>
-                  <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Topic (e.g. crypto, business)</label>
-                    <input type="text" name="topic" placeholder="crypto" required defaultValue="crypto" className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                  </div>
+                <div>
+                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Name</label>
+                  <input type="text" name="name" placeholder="Name" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
                 </div>
 
                 <div>
-                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Outline Your Case / Message</label>
-                  <textarea name="caseDetails" required rows={4} placeholder="Outline your case details, investment timeline, or general inquiries..." className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none"></textarea>
+                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Email</label>
+                  <input type="email" name="email" placeholder="Email" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                </div>
+
+                <div>
+                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Number</label>
+                  <input type="tel" name="phone" placeholder="Number" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
+                </div>
+
+                <div>
+                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Msg</label>
+                  <textarea name="message" required rows={4} placeholder="Msg" className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none"></textarea>
                 </div>
 
                 <button

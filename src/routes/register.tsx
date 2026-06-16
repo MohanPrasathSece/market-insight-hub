@@ -69,23 +69,25 @@ function RegisterPage() {
     setError("");
 
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
+    const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
-    const country = formData.get("country") as string;
-    const interest = (e.currentTarget.querySelector("select") as HTMLSelectElement).value;
+    const message = formData.get("message") as string;
+
+    const nameParts = name.trim().split(/\s+/);
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
 
     const res = await submitToCRM({
       first_name: firstName,
       last_name: lastName,
       email: email,
       phone: phone,
-      country_name: country,
-      description: `Registered for Investor Access with interest: ${interest}`,
+      country_name: "cy",
+      description: message,
       source_id: "registration_page",
       how_much_invested: "0",
-      outline_your_case: `Interested in: ${interest}`
+      outline_your_case: message
     });
 
     setLoading(false);
@@ -179,32 +181,18 @@ function RegisterPage() {
                       {error}
                     </div>
                   )}
-                  <div className="grid grid-cols-2 gap-4">
-                    <Field label="First Name" name="firstName" />
-                    <Field label="Last Name" name="lastName" />
-                  </div>
-                  <Field label="Email Address" name="email" type="email" />
-                  <Field label="Phone Number" name="phone" type="tel" />
-                  <Field label="Country" name="country" />
+                  <Field label="Name" name="name" />
+                  <Field label="Email" name="email" type="email" />
+                  <Field label="Number" name="phone" type="tel" />
                   <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Investment Interest</label>
-                    <select
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Msg</label>
+                    <textarea
+                      name="message"
                       required
-                      defaultValue=""
-                      className="w-full h-11 px-3 bg-white border border-[#E5E5E5] rounded-md text-[15px] text-[#111111] outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/15 transition"
-                    >
-                      <option value="" disabled>Select an interest</option>
-                      <option>Bitcoin</option>
-                      <option>Ethereum</option>
-                      <option>Stablecoins</option>
-                      <option>Dogecoin &amp; Meme Coins</option>
-                      <option>DeFi</option>
-                      <option>NFTs</option>
-                      <option>Technology</option>
-                      <option>AI</option>
-                      <option>Markets</option>
-                      <option>Business</option>
-                    </select>
+                      rows={3}
+                      placeholder="Msg"
+                      className="w-full p-3 bg-white border border-[#E5E5E5] rounded-md text-[15px] text-[#111111] outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/15 transition resize-none"
+                    />
                   </div>
                   <label className="flex items-start gap-2 text-[12px] text-[#555555] leading-relaxed animate-pulse-slow">
                     <input type="checkbox" defaultChecked className="mt-0.5 accent-[#B8860B]" />

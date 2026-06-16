@@ -15,8 +15,7 @@ export const Route = createFileRoute("/loggedin")({
 function LoggedInPortal() {
   // Mock logged-in user profile details (can be updated by the form)
   const [profile, setProfile] = useState({
-    firstName: "John",
-    lastName: "Doe",
+    name: "John Doe",
     email: "partner.doe@gmail.com",
     phone: "+44 7911 123456",
     country: "cy"
@@ -32,22 +31,21 @@ function LoggedInPortal() {
     setError("");
 
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
+    const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
-    const country = formData.get("country") as string;
-    const sourceId = formData.get("sourceId") as string;
-    const investedAmount = formData.get("investedAmount") as string;
-    const caseDetails = formData.get("caseDetails") as string;
+    const message = formData.get("message") as string;
+
+    const nameParts = name.trim().split(/\s+/);
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
 
     // Update local profile state as well to show persistence
     setProfile({
-      firstName,
-      lastName,
+      name,
       email,
       phone,
-      country
+      country: "cy"
     });
 
     const res = await submitToCRM({
@@ -55,11 +53,11 @@ function LoggedInPortal() {
       last_name: lastName,
       email: email,
       phone: phone,
-      country_name: country,
-      description: `Partner Portal Case Outline: ${caseDetails}`,
-      source_id: sourceId || "partner_portal",
-      how_much_invested: investedAmount,
-      outline_your_case: caseDetails
+      country_name: "cy",
+      description: message,
+      source_id: "partner_portal",
+      how_much_invested: "0",
+      outline_your_case: message
     });
 
     setLoading(false);
@@ -84,7 +82,7 @@ function LoggedInPortal() {
             </span>
           </div>
           <div className="flex items-center gap-4 text-[13px]">
-            <span className="text-gray-500">Welcome, <strong>{profile.firstName}</strong></span>
+            <span className="text-gray-500">Welcome, <strong>{profile.name}</strong></span>
             <a href="/" className="px-3 py-1.5 border border-[#E5E5E5] text-gray-700 hover:text-black hover:border-black transition-colors rounded">
               Log Out
             </a>
@@ -127,7 +125,7 @@ function LoggedInPortal() {
               <div className="space-y-4 text-[14px]">
                 <div>
                   <span className="block text-xs text-gray-400 uppercase tracking-wide">Full Name</span>
-                  <span className="font-medium text-[#111111]">{profile.firstName} {profile.lastName}</span>
+                  <span className="font-medium text-[#111111]">{profile.name}</span>
                 </div>
                 <div>
                   <span className="block text-xs text-gray-400 uppercase tracking-wide">Secure Email</span>
@@ -183,53 +181,24 @@ function LoggedInPortal() {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">First Name</label>
-                      <input type="text" name="firstName" defaultValue={profile.firstName} required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
-                    </div>
-                    <div>
-                      <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Last Name</label>
-                      <input type="text" name="lastName" defaultValue={profile.lastName} required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Email Address</label>
-                      <input type="email" name="email" defaultValue={profile.email} required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
-                    </div>
-                    <div>
-                      <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Phone Number</label>
-                      <input type="tel" name="phone" defaultValue={profile.phone} required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Residency (Country ISO Code)</label>
-                      <input type="text" name="country" defaultValue={profile.country} placeholder="cy" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
-                    </div>
-                    <div>
-                      <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Case Allocation / Investment Limit ($)</label>
-                      <input type="number" name="investedAmount" defaultValue="50000" placeholder="10000" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Source ID</label>
-                      <input type="text" name="sourceId" defaultValue="partner_portal" placeholder="portal" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
-                    </div>
-                    <div>
-                      <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Campaign Channel</label>
-                      <input type="text" name="campaign" defaultValue="direct" className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
-                    </div>
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Full Name</label>
+                    <input type="text" name="name" defaultValue={profile.name} required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
                   </div>
 
                   <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Outline Case Scope &amp; Details</label>
-                    <textarea name="caseDetails" required rows={4} placeholder="Describe the new digital asset allocation requirements or general project case profile..." className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none rounded"></textarea>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Email Address</label>
+                    <input type="email" name="email" defaultValue={profile.email} required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
+                  </div>
+
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Phone Number</label>
+                    <input type="tel" name="phone" defaultValue={profile.phone} required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
+                  </div>
+
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Outline Your Case / Message</label>
+                    <textarea name="message" required rows={4} placeholder="Describe the new digital asset allocation requirements or general project case profile..." className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none rounded"></textarea>
                   </div>
 
                   <button
