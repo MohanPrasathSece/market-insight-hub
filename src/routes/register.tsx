@@ -10,7 +10,7 @@ import c8 from "@/assets/c8.jpg";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Investor Access Registration — Market Frontier Journal" },
+      { title: "Investor Access Registration — Le Capital Moderne" },
       { name: "description", content: "Create your free investor account to access market analysis, crypto research reports, and digital asset insights." },
       { property: "og:title", content: "Investor Access Registration" },
       { property: "og:description", content: "Create your free investor account." },
@@ -65,7 +65,7 @@ function RegisterPage() {
       <header className="border-b border-[#E5E5E5] bg-white sticky top-0 z-20">
         <div className="container-edit flex items-center justify-between py-5">
           <a href="/" className="font-serif text-xl tracking-tight text-[#111111]">
-            Market Frontier <span className="italic text-[#B8860B]">Journal</span>
+            Le Capital <span className="italic text-[#B8860B]">Moderne</span>
           </a>
           <span className="text-xs uppercase tracking-[0.18em] text-[#555555]">Investor Access</span>
         </div>
@@ -91,7 +91,7 @@ function RegisterPage() {
           <div className="lg:col-span-5 lg:sticky lg:top-32">
             <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Investor Access</p>
             <h1 className="font-serif text-[44px] md:text-[52px] leading-[1.05] text-[#111111] mt-4">
-              Join the global desk reading Market Frontier on crypto.
+              Join the global desk reading Le Capital Moderne on crypto.
             </h1>
             <p className="mt-5 text-[16px] leading-relaxed text-[#555555]">
               Free access to our daily briefings, on-chain analytics and the crypto research that institutional desks read first.
@@ -169,7 +169,7 @@ function RegisterPage() {
                   </div>
                   <label className="flex items-start gap-2 text-[12px] text-[#555555] leading-relaxed">
                     <input type="checkbox" defaultChecked className="mt-0.5 accent-[#B8860B]" />
-                    Send me the weekly Market Frontier Crypto Briefing.
+                    Send me the weekly Le Capital Moderne Crypto Briefing.
                   </label>
                   <button
                     type="submit"
@@ -178,7 +178,7 @@ function RegisterPage() {
                     Create Investor Account
                   </button>
                   <p className="text-[12px] text-[#555555] text-center leading-relaxed">
-                    By registering, you agree to the Market Frontier Journal Terms and Privacy Policy.
+                    By registering, you agree to the Le Capital Moderne Terms and Privacy Policy.
                   </p>
                 </form>
               )}
@@ -279,7 +279,7 @@ function RegisterPage() {
       {/* Footer */}
       <footer className="bg-white border-t border-[#E5E5E5]">
         <div className="container-edit py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-[#555555]">
-          <p>© {new Date().getFullYear()} Market Frontier Journal · Editorial &amp; Research</p>
+          <p>© {new Date().getFullYear()} Le Capital Moderne · Editorial &amp; Research</p>
           <div className="flex gap-5">
             <a href="#" className="hover:text-[#B8860B]">Privacy</a>
             <a href="#" className="hover:text-[#B8860B]">Terms</a>

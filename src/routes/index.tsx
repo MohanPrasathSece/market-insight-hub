@@ -17,7 +17,7 @@ import c12 from "@/assets/c12.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "The Swiss Maestro's Digital Playbook: Why Roger Federer is Quietly Venturing Into Crypto — Market Frontier Journal" },
+      { title: "The Swiss Maestro's Digital Playbook: Why Roger Federer is Quietly Venturing Into Crypto — Le Capital Moderne" },
       { name: "description", content: "Roger Federer remains arguably the most universally liked Swiss figure, even after his retirement. Inside the private digital asset allocations and views on blockchain that are defining his post-court legacy." },
       { property: "og:title", content: "The Swiss Maestro's Digital Playbook: Why Roger Federer is Quietly Venturing Into Crypto" },
       { property: "og:description", content: "Inside the digital asset allocations behind Roger Federer's Swiss portfolio." },
@@ -163,8 +163,8 @@ function Index() {
       <header className="border-b border-[#E5E5E5]">
         <div className="container-edit py-8 text-center">
           <a {...openProps} className="inline-block">
-            <h1 className="font-serif text-[44px] md:text-[64px] leading-none tracking-tight">
-              Market Frontier <span className="italic text-[#B8860B]">Journal</span>
+            <h1 className="font-serif text-[44px] md:text-[64px] leading-[1.05] tracking-tight text-[#111111]">
+              Le Capital <span className="italic text-[#B8860B]">Moderne</span>
             </h1>
           </a>
           <p className="mt-3 text-[12px] uppercase tracking-[0.32em] text-[#555555]">
@@ -230,7 +230,7 @@ function Index() {
             className="w-full h-auto transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
           />
           <p className="mt-3 text-[12px] text-[#555555] italic text-center">
-            Roger Federer during a recent long-form podcast appearance in which crypto, trust, and Swiss financial innovation were the dominant themes. Photograph for Market Frontier Journal.
+            Roger Federer during a recent long-form podcast appearance in which crypto, trust, and Swiss financial innovation were the dominant themes. Photograph for Le Capital Moderne.
           </p>
         </a>
       </section>
@@ -337,7 +337,7 @@ function Index() {
           <div className="flex items-end justify-between mb-10">
             <div>
               <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Related Coverage</p>
-              <h3 className="font-serif text-[36px] mt-2">More From Market Frontier</h3>
+              <h3 className="font-serif text-[36px] mt-2">More From Le Capital Moderne</h3>
             </div>
             <a {...openProps} className="hidden md:inline-block text-[12px] uppercase tracking-[0.2em] border-b border-[#111111] pb-1 hover:text-[#B8860B] hover:border-[#B8860B]">
               View All Coverage
@@ -364,7 +364,7 @@ function Index() {
           <p className="text-[11px] uppercase tracking-[0.28em] text-[#B8860B]">The Briefing</p>
           <h3 className="font-serif text-[44px] leading-tight mt-3">Stay Ahead Of Market Trends</h3>
           <p className="mt-4 text-[17px] text-[#555555] leading-relaxed">
-            Receive weekly insights and market analysis from the Market Frontier Journal editorial desk.
+            Receive weekly insights and market analysis from the Le Capital Moderne editorial desk.
           </p>
           <form
             onSubmit={(e) => { e.preventDefault(); window.open(R, "_blank", "noopener,noreferrer"); }}
@@ -394,7 +394,7 @@ function Index() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 mb-12 border-b border-white/10">
             <div className="md:col-span-2">
               <h4 className="font-serif text-3xl">
-                Market Frontier <span className="italic text-[#D4AF37]">Journal</span>
+                Le Capital <span className="italic text-[#D4AF37]">Moderne</span>
               </h4>
               <p className="mt-4 text-[14px] text-white/65 leading-relaxed max-w-xl">
                 Financial intelligence for the modern investor. Editorial, research and analysis from a global newsroom covering markets, technology and the digital asset economy.
@@ -441,7 +441,7 @@ function Index() {
               ))}
             </div>
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-white/50">
-            <p>© {new Date().getFullYear()} Market Frontier Journal. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Le Capital Moderne. All rights reserved.</p>
             <div className="flex gap-5">
               {SOCIAL.map((s) => (
                 <a key={s} {...openProps} className="hover:text-[#D4AF37]">{s}</a>
