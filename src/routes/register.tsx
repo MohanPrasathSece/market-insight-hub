@@ -185,12 +185,12 @@ function RegisterPage() {
                   <Field label="Email" name="email" type="email" />
                   <Field label="Number" name="phone" type="tel" />
                   <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Msg</label>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Message</label>
                     <textarea
                       name="message"
                       required
                       rows={3}
-                      placeholder="Msg"
+                      placeholder="Message"
                       className="w-full p-3 bg-white border border-[#E5E5E5] rounded-md text-[15px] text-[#111111] outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/15 transition resize-none"
                     />
                   </div>

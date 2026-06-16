@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { submitToCRM } from "@/lib/crm";
 import hero from "@/assets/hero.jpg";
 import author from "@/assets/author.jpg";
 import c1 from "@/assets/c1.jpg";
@@ -78,155 +76,9 @@ const FOOTER_COLS: Array<[string, string[]]> = [
   ["Legal", ["Privacy Policy", "Terms Of Service", "Cookie Settings", "Disclosures", "Accessibility", "Modern Slavery Statement", "Code Of Conduct", "Whistleblower", "Sitemap", "Help Centre"]],
 ];
 
-const SECTIONS: Array<{ h: string; p: string[] }> = [
-  { h: "Introduction", p: [
-    "When historians eventually write the financial biography of Roger Federer, his quiet venture into cryptocurrency might end up being one of its most intriguing chapters. Roger Federer remains arguably the most universally liked Swiss figure, even after his retirement. In a world increasingly divided, the former world number one carries a brand of effortless grace and universal trust that transcends sports. Yet, behind the scenes of his post-tennis life, a quieter narrative is emerging. The Swiss Maestro is increasingly turning his focus toward the future of digital finance, participating in private allocations and exploring Switzerland's booming Crypto Valley in Zug.",
-    "This article is not a fan profile. It is a sober attempt, drawing on Swiss filings, blockchain developments, and conversations with people working alongside his family office, to map Federer's engagement with the digital asset space—and why his next moves are being watched closely by institutions and retail allocators alike.",
-  ]},
-  { h: "A Legacy of Trust in a Digital Age", p: [
-    "Federer's brand has always been built on stability, precision, and longevity. These are the exact qualities that the traditional financial world has often accused the cryptocurrency space of lacking. However, as digital assets mature, the intersection of Federer's brand and blockchain technology highlights a shifting paradigm: the search for institutional trust.",
-    "Switzerland has always been a hub of financial innovation and asset protection. Federer's venture is not a casual speculation; it follows months of internal modeling by his advisors on digital property rights, inflation hedges, and what Swiss wealth management circles refer to as 'trust-anchored digital allocations.'",
-  ]},
-  { h: "The Swiss Crypto Valley Connection", p: [
-    "Switzerland’s Canton of Zug, known globally as 'Crypto Valley,' has become the epicenter of global blockchain development. For a Swiss icon like Federer, this local revolution was impossible to ignore. Several of Switzerland's leading digital asset managers and blockchain foundations have quietly consulted with Federer's family office on wealth preservation strategies in the digital age.",
-    "Although his public comments are rare, Federer's association with Switzerland's regulated digital banking ecosystem has done meaningful work. It has re-priced the public's perception of digital assets as legitimate, long-term reserves, and in doing so, it has lifted the value of every platform associated with Swiss-grade compliance.",
-  ]},
-  { h: "The Evolution Of Digital Finance", p: [
-    "Federer's crypto interests did not arrive in a vacuum. They tracked the broader maturation of digital finance: custody standards approaching institutional grade, regulators reluctantly accepting that the asset class was not going away, and a generation of allocators willing to underwrite the operational risk.",
-    "The most consequential change is structural. For the first time, a parallel settlement system exists alongside the traditional banking stack — and Switzerland is one of the few jurisdictions positioned at the intersection of private wealth, identity, and compliant on-chain value.",
-  ]},
-  { h: "From Sports to Web3 and Tokenization", p: [
-    "Beyond direct holdings in major digital currencies like Bitcoin, Federer has expressed deep interest in the tokenization of real-world assets (RWAs). From art and real estate to sports memorabilia and intellectual property, the ability to fractionalize and secure ownership on public ledgers represents a massive shift in how value is stored and transferred.",
-    "On any rational valuation framework, the fractionalized asset market is poised for multi-trillion dollar growth. For Federer, the utility lies in democratizing access to assets that were previously out of reach, bridging the gap between his sporting heritage and digital technology.",
-  ]},
-  { h: "A Different Kind of Crypto Advocate", p: [
-    "Unlike other sports stars who promoted speculative tokens and faced subsequent regulatory backlash, Federer's involvement remains understated and focused on institutional-grade technology. He isn't selling a meme coin; he is engaging with the architecture of future financial systems.",
-    "This distinction is crucial. As retail investors look for guidance in a volatile market, the Swiss Maestro’s cautious, long-term perspective serves as a stabilizing influence, proving that digital assets have a place in even the most conservative portfolios.",
-  ]},
-  { h: "The Swiss Payments Roadmap", p: [
-    "While US super-apps seek regulatory compliance, Swiss institutions have already integrated digital asset rails into mainstream banking. The Swiss National Bank's wholesale CBDC project and the launch of regulated crypto trading desks at major Swiss cantonal banks have shown that digital assets can live harmoniously inside the traditional system.",
-    "If European and Swiss institutions execute even half of their digital asset ambitions, they will form one of the few financial surfaces capable of moving digital assets at scale — and Federer is uniquely positioned at the gateway of this new financial frontier.",
-  ]},
-  { h: "The Swiss Maestro Effect On Markets", p: [
-    "Market analysts have now quantified what wealth managers long suspected: endorsement by a trusted public figure can move digital asset adoption in measurable, sometimes multi-percent increments. The 'Swiss Maestro effect' is no longer anecdotal; it represents a new standard of trust that major digital asset managers now actively court.",
-    "For Federer himself, this creates an unusual second-order asset: optionality on his own reputation. The value of his associations is correlated with his reputation for flawless integrity.",
-  ]},
-  { h: "Investor Behaviour", p: [
-    "Federer's crypto journey has also reshaped retail behaviour. A generation of investors who viewed crypto as high-risk speculation are now seeing it through the lens of institutional wealth preservation. The data is unambiguous: accounts that follow Federer's philanthropic and investment updates are showing an increased openness to digital assets.",
-  ]},
-  { h: "Market Trends", p: [
-    "Three trends now matter most for Swiss digital asset portfolios: continued institutional adoption of bitcoin via regulated custody, the maturation of tokenization layers for real-world assets, and the gradual integration of crypto rails into private banking systems.",
-  ]},
-  { h: "Institutional Participation", p: [
-    "Five years ago, the idea that a Swiss private bank might hold bitcoin was treated as a speculative concept. Today it is standard service at several. The institutional cohort that once viewed digital assets as reckless now treats them as an essential hedge against inflation.",
-  ]},
-  { h: "Technology Entrepreneurs", p: [
-    "For technology entrepreneurs watching from Switzerland, the lesson of Federer's digital playbook is not 'buy crypto.' It is that operators who control trust, brand, and a willingness to underwrite balance-sheet innovations can capture an outsized share of the returns from the next financial stack.",
-  ]},
-  { h: "The Role Of AI In Modern Markets", p: [
-    "Federer's tech allocations increasingly overlap with artificial intelligence and digital asset infrastructure. AI-driven portfolios now manage a meaningful share of Swiss wealth, and his family office sits close to the intersection of automated asset management and blockchain tech.",
-  ]},
-  { h: "Future Outlook", p: [
-    "Where does the Federer crypto story go from here? Most plausibly: deeper integration with his philanthropic efforts. The Roger Federer Foundation, which supports early education programs in Southern Africa and Switzerland, could eventually leverage decentralized rails for cross-border philanthropy, ensuring that funds reach their destinations with minimal friction and maximum transparency.",
-  ]},
-  { h: "Expert Commentary", p: [
-    "“Roger's real edge in crypto was never timing,” one Swiss asset manager who has tracked his positions told this publication. “It was that he brought absolute trust and legitimacy to a sector that desperately needed both, aligning his family office with the safest regulatory frameworks in the world.”",
-  ]},
-  { h: "Risk Considerations", p: [
-    "None of this should be read as an endorsement of any single position. Liquidity in digital markets remains uneven. Regulatory regimes are still converging. The same volatility that defines digital assets has also wiped out less patient capital. Trust, particularly around any single named figure, is a feature of this market, not a bug.",
-  ]},
-  { h: "Market Forecast", p: [
-    "Our base case for the coming year is one of continued, measured institutionalisation in Switzerland, with bitcoin and tokenized real-world assets capturing the bulk of regulated inflows. The Swiss franc-backed stablecoins will likely continue to trade more on stability than on speculative narrative.",
-  ]},
-  { h: "Innovation Roadmap", p: [
-    "Three areas warrant close attention: stablecoin-based consumer payments inside European apps, AI-native portfolio construction tools drawing on Swiss on-chain data, and the gradual on-chaining of traditional family office assets.",
-  ]},
-  { h: "Conclusion", p: [
-    "The story of Roger Federer and crypto is, at its core, a story about the convergence of brand, trust, and structural innovation. The headlines will continue to focus on price. The more durable shift is the one taking place quietly across his portfolio, and across the institutions that increasingly take their cues from Swiss-grade excellence.",
-  ]},
-];
+
 
 function Index() {
-  // Newsletter form states
-  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
-  const [newsletterLoading, setNewsletterLoading] = useState(false);
-  const [newsletterError, setNewsletterError] = useState("");
-
-  // Contact form states
-  const [contactSubmitted, setContactSubmitted] = useState(false);
-  const [contactLoading, setContactLoading] = useState(false);
-  const [contactError, setContactError] = useState("");
-
-  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setNewsletterLoading(true);
-    setNewsletterError("");
-    
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
-    const message = formData.get("message") as string;
-
-    const nameParts = name.trim().split(/\s+/);
-    const firstName = nameParts[0] || "";
-    const lastName = nameParts.slice(1).join(" ") || "";
-
-    const res = await submitToCRM({
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      phone: phone,
-      country_name: "cy",
-      description: message || "Subscribed to Le Capital Moderne newsletter",
-      source_id: "newsletter_home",
-      how_much_invested: "0",
-      outline_your_case: message || "Newsletter subscriber"
-    });
-
-    setNewsletterLoading(false);
-    if (res.success) {
-      setNewsletterSubmitted(true);
-    } else {
-      setNewsletterError(res.error || "Failed to submit. Please try again.");
-    }
-  };
-
-  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setContactLoading(true);
-    setContactError("");
-    
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
-    const message = formData.get("message") as string;
-
-    const nameParts = name.trim().split(/\s+/);
-    const firstName = nameParts[0] || "";
-    const lastName = nameParts.slice(1).join(" ") || "";
-
-    const res = await submitToCRM({
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      phone: phone,
-      country_name: "cy",
-      description: message,
-      source_id: "contact_home",
-      how_much_invested: "0",
-      outline_your_case: message
-    });
-
-    setContactLoading(false);
-    if (res.success) {
-      setContactSubmitted(true);
-    } else {
-      setContactError(res.error || "Failed to submit. Please try again.");
-    }
-  };
-
   return (
     <div className="bg-white text-[#111111]" style={{ fontFamily: "var(--font-sans)" }}>
       {/* Top utility bar */}
@@ -280,137 +132,274 @@ function Index() {
         </div>
       </div>
 
-      {/* Featured */}
-      <section className="container-edit pt-14 pb-10 animate-fade-up">
-        <div className="max-w-4xl mx-auto text-center">
-          <a {...openProps} className="text-[11px] uppercase tracking-[0.28em] text-[#B8860B]">
-            Profile · Digital Assets
-          </a>
-          <a {...openProps} className="block mt-5">
-            <h2 className="font-serif text-[40px] md:text-[64px] leading-[1.05] tracking-tight text-[#111111]">
-              The Swiss Maestro's Digital Playbook: Why Roger Federer is Quietly Venturing Into Crypto
-            </h2>
-          </a>
-          <p className="mt-6 text-[19px] leading-relaxed text-[#555555] max-w-3xl mx-auto" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>
-            Roger Federer remains arguably the most universally liked Swiss figure, even after his retirement. Inside the private digital asset allocations and views on blockchain that are defining his post-court legacy.
-          </p>
-          <div className="mt-6 flex items-center justify-center gap-3 text-[12px] text-[#555555] tracking-wide">
-            <span>By Eleanor Whitfield</span>
-            <span className="w-1 h-1 rounded-full bg-[#555555]" />
-            <span>June 16, 2026</span>
-            <span className="w-1 h-1 rounded-full bg-[#555555]" />
-            <span>12 min read</span>
-          </div>
-        </div>
-
-        <a {...openProps} className="block mt-12 group overflow-hidden">
-          <img
-            src={hero}
-            alt="Roger Federer in a podcast studio discussing digital assets"
-            width={1920}
-            height={1080}
-            className="w-full h-auto transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
-          />
-          <p className="mt-3 text-[12px] text-[#555555] italic text-center">
-            Roger Federer during a recent long-form podcast appearance in which crypto, trust, and Swiss financial innovation were the dominant themes. Photograph for Le Capital Moderne.
-          </p>
-        </a>
-      </section>
-
-      {/* Body + sidebar */}
-      <section className="container-edit grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20">
-        <article className="lg:col-span-8 lg:border-r lg:border-[#E5E5E5] lg:pr-12">
-          {SECTIONS.map((s, i) => (
-            <div key={s.h} className="mb-10">
-              <h3 className="font-serif text-[30px] md:text-[34px] leading-[1.15] tracking-tight text-[#111111] mb-4">
-                {s.h}
-              </h3>
-              {s.p.map((para, j) => (
-                <p
-                  key={j}
-                  className={
-                    "text-[18px] leading-[1.75] text-[#222222] mb-5 " +
-                    (i === 0 && j === 0 ? "first-letter:font-serif first-letter:text-[64px] first-letter:float-left first-letter:mr-3 first-letter:mt-2 first-letter:leading-[0.85] first-letter:text-[#111111]" : "")
-                  }
-                >
-                  {para}
-                </p>
-              ))}
-
-              {i % 4 === 2 && (
-                <blockquote className="my-10 border-l-4 border-[#B8860B] pl-6 py-2">
-                  <p className="font-serif italic text-[26px] leading-snug text-[#111111]">
-                    “Capital is following code. The institutions that recognise this earliest will shape the next decade of asset allocation.”
-                  </p>
-                  <footer className="mt-3 text-[12px] uppercase tracking-[0.18em] text-[#555555]">
-                    — A senior allocator, quoted in this report
-                  </footer>
-                </blockquote>
-              )}
-
-              {i === 3 && (
-                <a {...openProps} className="inline-block my-6 border-b border-[#B8860B] text-[13px] uppercase tracking-[0.2em] text-[#B8860B] pb-1 hover:text-[#111111] hover:border-[#111111] transition-colors">
-                  Read More — The Full Research Note
-                </a>
-              )}
-              {i === 7 && (
-                <a {...openProps} className="inline-block my-6 border-b border-[#B8860B] text-[13px] uppercase tracking-[0.2em] text-[#B8860B] pb-1 hover:text-[#111111] hover:border-[#111111] transition-colors">
-                  View Analysis — Institutional Flows
-                </a>
-              )}
-              {i === 11 && (
-                <a {...openProps} className="inline-block my-6 border-b border-[#B8860B] text-[13px] uppercase tracking-[0.2em] text-[#B8860B] pb-1 hover:text-[#111111] hover:border-[#111111] transition-colors">
-                  Explore Research — 2026 Forecast
-                </a>
-              )}
-            </div>
-          ))}
-
-          {/* Author */}
-          <div className="mt-14 pt-10 border-t border-[#E5E5E5] flex gap-6 items-start">
-            <a {...openProps}>
-              <img src={author} alt="Eleanor Whitfield" width={96} height={96} loading="lazy" className="w-24 h-24 rounded-full object-cover" />
-            </a>
+      {/* Main Grid Content */}
+      <section className="container-edit pt-8 pb-20 animate-fade-up">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          {/* LEFT COLUMN: Categories, LCM ePaper Box, Lifestyle, Health */}
+          <aside className="hidden lg:block lg:col-span-3 xl:col-span-2.5 border-r border-[#E5E5E5] pr-6 space-y-8">
+            {/* Lifestyle category */}
             <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-[#555555]">Senior Markets Correspondent</p>
-              <a {...openProps}><h4 className="font-serif text-2xl text-[#111111] mt-1 hover:text-[#B8860B]">Eleanor Whitfield</h4></a>
-              <p className="mt-2 text-[15px] text-[#555555] leading-relaxed">
-                Eleanor writes on capital markets, digital assets and the institutions reshaping global finance. Previously a markets editor in London and Hong Kong.
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-2 font-sans">Life Style</span>
+              <a {...openProps} className="block font-serif text-[15px] font-bold leading-snug text-[#111111] hover:text-[#B8860B] transition-colors mb-2">
+                The new Alpine chalets bought entirely with digital asset earnings. Inside Switzerland's luxury crypto properties.
+              </a>
+              <p className="text-[13px] text-[#555555] leading-relaxed">
+                As wealth structures evolve in Zug and Geneva, luxury real estate is matching the shift.
               </p>
-              <p className="mt-2 text-[12px] text-[#555555]">Published June 16, 2026 · Updated June 16, 2026</p>
-              <div className="mt-4 flex gap-4 text-[12px] uppercase tracking-[0.18em]">
-                {SOCIAL.map((s) => (
-                  <a key={s} {...openProps} className="text-[#555555] hover:text-[#B8860B]">{s}</a>
+            </div>
+
+            {/* Health category */}
+            <div className="pt-6 border-t border-[#E5E5E5]">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-2 font-sans">Health</span>
+              <a {...openProps} className="block font-serif text-[15px] font-bold leading-snug text-[#111111] hover:text-[#B8860B] transition-colors mb-2">
+                Swiss clinics integrate blockchain for medical history portability.
+              </a>
+              <p className="text-[13px] text-[#555555] leading-relaxed">
+                Decentralised ledger technology is finding an unexpected foothold in premium alpine wellness.
+              </p>
+            </div>
+
+            {/* LCM ePaper Card */}
+            <div className="pt-6 border-t border-[#E5E5E5]">
+              <div className="bg-red-600 text-white font-bold text-[9px] tracking-[0.2em] uppercase py-1 px-2.5 inline-block rounded mb-2.5 font-sans">
+                Flat 40% OFF
+              </div>
+              <h5 className="font-serif text-[17px] font-bold text-[#111111] leading-tight">Le Capital Moderne ePaper</h5>
+              <p className="text-[12px] text-[#555555] mt-1.5 leading-relaxed">
+                Read the daily digital edition of Le Capital Moderne on your tablet.
+              </p>
+              <div className="my-4 flex justify-center">
+                <div className="w-24 h-32 bg-white border border-[#E5E5E5] rounded p-2 flex flex-col justify-between shadow-md">
+                  <div className="border-b border-[#E5E5E5] pb-1 text-[6px] font-serif text-center font-bold tracking-tighter">
+                    Le Capital Moderne
+                  </div>
+                  <div className="flex-1 flex flex-col justify-center gap-1">
+                    <div className="h-1 bg-gray-200 w-full"></div>
+                    <div className="h-1 bg-gray-200 w-5/6"></div>
+                    <div className="h-1 bg-gray-200 w-4/6"></div>
+                  </div>
+                  <div className="text-[5px] text-[#B8860B] text-center font-semibold uppercase">
+                    ePaper PDF
+                  </div>
+                </div>
+              </div>
+              <a href="/register" className="block w-full py-2 bg-[#111111] hover:bg-[#B8860B] text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-colors rounded text-center font-sans">
+                Subscribe Now
+              </a>
+            </div>
+          </aside>
+
+          {/* MIDDLE COLUMN: Hero Image, Main Title, Dialogue Conversation Transcript */}
+          <main className="col-span-12 lg:col-span-6 xl:col-span-6.5 lg:border-r lg:border-[#E5E5E5] lg:px-6 space-y-6">
+            
+            {/* Title Section */}
+            <div className="space-y-3">
+              <span className="text-[11px] uppercase tracking-[0.28em] text-[#B8860B] font-semibold block font-sans">Special Feature · Switzerland</span>
+              <h2 className="font-serif text-[32px] md:text-[44px] leading-[1.1] tracking-tight text-[#111111]">
+                The 250€ Experiment: Swiss Influencer Details 10x Returns in Crypto Portfolio
+              </h2>
+              <p className="text-[17px] leading-relaxed text-[#555555] font-serif italic">
+                Eleanor Whitfield sits down with a leading Swiss blockchain influencer to discuss why starting small is the best way to underwrite digital asset volatility.
+              </p>
+              <div className="flex items-center gap-3 text-[11px] text-[#777777] tracking-wide pt-1 font-sans">
+                <span>Eleanor Whitfield</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E5E5E5]" />
+                <span>June 16, 2026</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E5E5E5]" />
+                <span>8 min read</span>
+              </div>
+            </div>
+
+            {/* Hero Image */}
+            <a {...openProps} className="block group overflow-hidden rounded-lg">
+              <img
+                src={hero}
+                alt="Swiss Crypto Influencer discussing digital assets"
+                width={1200}
+                height={675}
+                className="w-full h-auto object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
+              />
+              <p className="mt-3 text-[11px] text-[#555555] italic text-center leading-normal">
+                A Swiss digital assets influencer detailing how he turned a 250€ trial into 10x profits in Zug's Crypto Valley. Photograph for Le Capital Moderne.
+              </p>
+            </a>
+
+            {/* Dialogue Conversation Section */}
+            <div className="border-t border-[#E5E5E5] pt-6 space-y-6">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-[12px] uppercase font-sans">
+                  EW
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.15em] text-[#555555] font-bold font-sans">Eleanor Whitfield</p>
+                  <p className="mt-1 text-[16px] leading-[1.6] text-[#222222]">
+                    Let’s start with the basics. A lot of retail investors are intimidated by crypto's volatility. How should they begin?
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#B8860B] text-white flex items-center justify-center font-bold text-[12px] uppercase font-sans">
+                  SI
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.15em] text-[#B8860B] font-bold font-sans">Swiss Influencer</p>
+                  <p className="mt-1 text-[16px] leading-[1.6] text-[#222222]">
+                    I tell people to keep it simple and easy. Don't throw your life savings in. I ran a test recently: I invested exactly <strong className="text-black">250€</strong> into Swiss-regulated retail digital baskets. Within a few weeks, that position returned a <strong className="text-[#B8860B]">10x profit</strong>—valuing it at <strong className="text-black">2,500€</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-[12px] uppercase font-sans">
+                  EW
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.15em] text-[#555555] font-bold font-sans">Eleanor Whitfield</p>
+                  <p className="mt-1 text-[16px] leading-[1.6] text-[#222222]">
+                    A 10x return is remarkable, but isn’t that level of return typical of high-risk speculative tokens? How was this achieved on compliant Swiss rails?
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#B8860B] text-white flex items-center justify-center font-bold text-[12px] uppercase font-sans">
+                  SI
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.15em] text-[#B8860B] font-bold font-sans">Swiss Influencer</p>
+                  <p className="mt-1 text-[16px] leading-[1.6] text-[#222222]">
+                    It was structured. By routing the 250€ into a mix of Layer-1 infrastructure tokens and tokenized real-world assets (RWAs) in Zug's Crypto Valley, we captured momentum while staying protected by Switzerland's strict digital banking framework. The key is using compliant, secure CRM endpoints and regulated private banks.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-[12px] uppercase font-sans">
+                  EW
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.15em] text-[#555555] font-bold font-sans">Eleanor Whitfield</p>
+                  <p className="mt-1 text-[16px] leading-[1.6] text-[#222222]">
+                    What is the main takeaway for retail investors watching this space?
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#B8860B] text-white flex items-center justify-center font-bold text-[12px] uppercase font-sans">
+                  SI
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.15em] text-[#B8860B] font-bold font-sans">Swiss Influencer</p>
+                  <p className="mt-1 text-[16px] leading-[1.6] text-[#222222]">
+                    Start small, keep it simple, and use secure platforms. If you can test the waters with 250€, you can learn how the rails work without risking significant capital. The Swiss model is proving that compliance and high performance can coexist.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Author box */}
+            <div className="mt-12 pt-8 border-t border-[#E5E5E5] flex gap-4 items-start">
+              <a {...openProps}>
+                <img src={author} alt="Eleanor Whitfield" className="w-16 h-16 rounded-full object-cover shadow-sm animate-fade-up" />
+              </a>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.15em] text-[#555555] font-bold font-sans">Senior Markets Correspondent</p>
+                <a {...openProps}><h4 className="font-serif text-lg font-bold text-[#111111] hover:text-[#B8860B] transition-colors mt-0.5">Eleanor Whitfield</h4></a>
+                <p className="mt-1.5 text-[14px] text-[#555555] leading-relaxed">
+                  Eleanor writes on capital markets, digital assets and the institutions reshaping global finance. Previously a markets editor in London and Hong Kong.
+                </p>
+              </div>
+            </div>
+          </main>
+
+          {/* RIGHT COLUMN: Video Cards, Premium research, Editor picks */}
+          <aside className="col-span-12 lg:col-span-3 space-y-8">
+            
+            {/* TOI+ Inspired Featured Video block */}
+            <div className="space-y-6">
+              <h4 className="text-[12px] font-bold uppercase tracking-[0.24em] text-[#B8860B] pb-2 border-b border-[#E5E5E5] font-sans">
+                Featured Video
+              </h4>
+              
+              <div className="space-y-6">
+                {[
+                  {
+                    category: "SWISS CRYPTO VALLEY SUMMIT",
+                    title: "Zug Summit: Global Influencers Reveal 10x Profit Portfolio Strategies",
+                    img: c1,
+                    duration: "10:38"
+                  },
+                  {
+                    category: "GENEVA FINANCIAL DESK",
+                    title: "How Compliance Rails Let Swiss Banks Route Digital Assets Safely",
+                    img: c2,
+                    duration: "09:30"
+                  },
+                  {
+                    category: "ZUG BANKING PIPELINE",
+                    title: "Inside the New Retail Blockchain Infrastructure Changing Private Banking",
+                    img: c3,
+                    duration: "05:15"
+                  }
+                ].map((v, idx) => (
+                  <a key={idx} {...openProps} className="group block space-y-2.5">
+                    <div className="relative overflow-hidden bg-black aspect-video rounded-md shadow-sm">
+                      <img
+                        src={v.img}
+                        alt={v.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90"
+                      />
+                      {/* Play Icon and Duration badge */}
+                      <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-0.5 rounded text-[10px] text-white flex items-center gap-1 font-medium font-sans">
+                        <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                        {v.duration}
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      {/* Red label header */}
+                      <span className="inline-block text-[9px] font-bold tracking-[0.1em] text-red-600 uppercase font-sans">
+                        {v.category}
+                      </span>
+                      <h5 className="font-serif text-[15px] font-bold leading-snug text-[#111111] group-hover:text-[#B8860B] transition-colors">
+                        {v.title}
+                      </h5>
+                    </div>
+                  </a>
                 ))}
               </div>
             </div>
-          </div>
-        </article>
 
-        {/* Sidebar */}
-        <aside className="lg:col-span-4 space-y-10">
-          {SIDEBAR.map(([title, items]) => (
-            <div key={title as string}>
-              <h4 className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B] pb-3 mb-4 border-b border-[#E5E5E5]">{title as string}</h4>
-              <ul className="space-y-4">
-                {(items as string[]).map((it, idx) => (
-                  <li key={it} className="flex gap-3">
-                    <span className="font-serif text-[20px] text-[#D4AF37] leading-none w-6">{String(idx + 1).padStart(2, "0")}</span>
-                    <a {...openProps} className="font-serif text-[17px] leading-snug text-[#111111] hover:text-[#B8860B]">{it}</a>
-                  </li>
-                ))}
-              </ul>
+            {/* Premium Research Box */}
+            <div className="bg-[#111111] text-white p-6 rounded-lg">
+              <p className="text-[10px] uppercase tracking-[0.24em] text-[#D4AF37] font-bold font-sans">Premium Research</p>
+              <p className="font-serif text-[20px] leading-snug mt-2 font-bold">The 2026 Investor Intelligence Briefing</p>
+              <a {...openProps} className="inline-block mt-4 text-[12px] uppercase tracking-[0.2em] border-b border-[#D4AF37] pb-1 hover:text-[#D4AF37] font-medium transition-colors font-sans">
+                Request Access
+              </a>
             </div>
-          ))}
 
-          <div className="bg-[#111111] text-white p-6">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-[#D4AF37]">Premium Research</p>
-            <p className="font-serif text-[22px] leading-snug mt-2">The 2026 Investor Intelligence Briefing</p>
-            <a {...openProps} className="inline-block mt-4 text-[12px] uppercase tracking-[0.2em] border-b border-[#D4AF37] pb-1 hover:text-[#D4AF37]">
-              Request Access
-            </a>
-          </div>
-        </aside>
+            {/* Editor's Picks / Most Read list from original sidebar */}
+            {SIDEBAR.slice(0, 2).map(([title, items]) => (
+              <div key={title as string} className="pt-6 border-t border-[#E5E5E5]">
+                <h4 className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B] pb-3 mb-4 border-b border-[#E5E5E5] font-bold font-sans">{title as string}</h4>
+                <ul className="space-y-4">
+                  {(items as string[]).map((it, idx) => (
+                    <li key={idx} className="flex gap-2">
+                      <span className="font-serif text-[18px] text-[#D4AF37] leading-none w-5 font-bold">{String(idx + 1).padStart(2, "0")}</span>
+                      <a {...openProps} className="font-serif text-[15px] leading-snug text-[#111111] hover:text-[#B8860B] transition-colors">{it}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+          </aside>
+        </div>
       </section>
 
       {/* Related */}
@@ -445,137 +434,17 @@ function Index() {
         <div className="container-edit py-20 text-center max-w-2xl mx-auto animate-fade-up">
           <p className="text-[11px] uppercase tracking-[0.28em] text-[#B8860B]">The Briefing</p>
           <h3 className="font-serif text-[44px] leading-tight mt-3">Stay Ahead Of Market Trends</h3>
-          <p className="mt-4 text-[17px] text-[#555555] leading-relaxed">
+          <p className="mt-4 text-[17px] text-[#555555] leading-relaxed mb-8">
             Receive weekly insights and market analysis from the Le Capital Moderne editorial desk.
           </p>
-          <form
-            onSubmit={handleNewsletterSubmit}
-            className="mt-8 flex flex-col gap-3 max-w-md mx-auto"
-          >
-            {newsletterSubmitted ? (
-              <div className="p-3 bg-[#FFF8E5] text-[#B8860B] text-sm font-medium rounded-md border border-[#B8860B]/20">
-                ✓ Successfully subscribed! Your lead details are logged in our secure CRM.
-              </div>
-            ) : (
-              <>
-                {newsletterError && (
-                  <div className="p-3 bg-red-50 text-red-600 border border-red-100 text-sm font-medium rounded-md">
-                    {newsletterError}
-                  </div>
-                )}
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  required
-                  className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Number"
-                  required
-                  className="h-12 px-4 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition"
-                />
-                <textarea
-                  name="message"
-                  placeholder="Msg"
-                  required
-                  rows={2}
-                  className="p-3 border border-[#E5E5E5] bg-white text-[15px] text-[#111111] outline-none focus:border-[#B8860B] transition resize-none"
-                />
-                <button type="submit" disabled={newsletterLoading} className="h-12 px-6 bg-[#111111] text-white text-[13px] uppercase tracking-[0.2em] hover:bg-[#B8860B] disabled:bg-gray-400 transition-colors flex items-center justify-center gap-2">
-                  {newsletterLoading ? (
-                    <>
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                      Subscribing...
-                    </>
-                  ) : (
-                    "Subscribe & Access Briefing"
-                  )}
-                </button>
-              </>
-            )}
-          </form>
+          <a href="/register" className="inline-block h-12 px-8 bg-[#111111] text-white text-[13px] uppercase tracking-[0.2em] hover:bg-[#B8860B] transition-colors leading-[48px] text-center font-medium">
+            Get In Touch
+          </a>
           <div className="mt-10 flex justify-center gap-6 text-[12px] uppercase tracking-[0.2em] text-[#555555]">
             {SOCIAL.map((s) => (
               <a key={s} {...openProps} className="hover:text-[#B8860B]">{s}</a>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Contact & Case Outline Form */}
-      <section className="bg-[#FAFAF7] border-t border-[#E5E5E5]">
-        <div className="container-edit py-20 max-w-4xl mx-auto animate-fade-up">
-          <div className="text-center mb-12">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#B8860B]">Private Desk</p>
-            <h3 className="font-serif text-[40px] leading-tight mt-3">Outline Your Case Details</h3>
-            <p className="mt-4 text-[16px] text-[#555555] leading-relaxed max-w-xl mx-auto">
-              Submit your case details directly to our digital asset desks. A private client manager will review and respond within 24 hours.
-            </p>
-          </div>
-
-          <form onSubmit={handleContactSubmit} className="bg-white p-8 sm:p-10 border border-[#E5E5E5] shadow-sm space-y-6">
-            {contactSubmitted ? (
-              <div className="text-center py-12">
-                <div className="mx-auto w-12 h-12 rounded-full bg-[#FFF8E5] flex items-center justify-center mb-4">
-                  <span className="text-[#B8860B] text-xl">✓</span>
-                </div>
-                <h4 className="font-serif text-2xl text-[#111111]">Case Submitted Successfully</h4>
-                <p className="mt-2 text-sm text-[#555555]">Your case has been logged in our secure CRM. A representative will contact you shortly.</p>
-              </div>
-            ) : (
-              <>
-                {contactError && (
-                  <div className="p-3 bg-red-50 text-red-600 rounded-md text-sm text-center border border-red-100">
-                    {contactError}
-                  </div>
-                )}
-                <div>
-                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Name</label>
-                  <input type="text" name="name" placeholder="Name" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                </div>
-
-                <div>
-                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Email</label>
-                  <input type="email" name="email" placeholder="Email" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                </div>
-
-                <div>
-                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Number</label>
-                  <input type="tel" name="phone" placeholder="Number" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition" />
-                </div>
-
-                <div>
-                  <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Msg</label>
-                  <textarea name="message" required rows={4} placeholder="Msg" className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none"></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={contactLoading}
-                  className="w-full h-12 bg-[#111111] text-white text-[13px] uppercase tracking-[0.2em] hover:bg-[#B8860B] disabled:bg-gray-400 transition-colors flex items-center justify-center gap-2"
-                >
-                  {contactLoading ? (
-                    <>
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                      Submitting Case...
-                    </>
-                  ) : (
-                    "Submit Case Details"
-                  )}
-                </button>
-              </>
-            )}
-          </form>
         </div>
       </section>
 

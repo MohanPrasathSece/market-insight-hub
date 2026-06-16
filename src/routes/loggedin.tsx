@@ -197,8 +197,8 @@ function LoggedInPortal() {
                   </div>
 
                   <div>
-                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Outline Your Case / Message</label>
-                    <textarea name="message" required rows={4} placeholder="Describe the new digital asset allocation requirements or general project case profile..." className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none rounded"></textarea>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Message</label>
+                    <textarea name="message" required rows={4} placeholder="Message" className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none rounded"></textarea>
                   </div>
 
                   <button
