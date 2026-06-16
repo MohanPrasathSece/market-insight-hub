@@ -4,6 +4,35 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --color-ink: #111111;
+  --color-ink-soft: #555555;
+  --color-gold: #b8860b;
+  --color-gold-soft: #d4af37;
+  --color-rule: #e5e5e5;
+  --color-paper: #ffffff;
+  --color-paper-tint: #fafaf7;
+}
+
+@utility container-edit {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@keyframes mfj-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mfj-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@utility animate-fade-up { animation: mfj-fade-up 0.7s ease-out both; }
+@utility animate-marquee { animation: mfj-marquee 60s linear infinite; }
+
 /*
  * Design system definition.
  *
