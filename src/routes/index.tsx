@@ -202,35 +202,35 @@ function Index() {
       <section className="container-edit pt-14 pb-10 animate-fade-up">
         <div className="max-w-4xl mx-auto text-center">
           <a {...openProps} className="text-[11px] uppercase tracking-[0.28em] text-[#B8860B]">
-            Markets &amp; Innovation
+            Profile · Digital Assets
           </a>
           <a {...openProps} className="block mt-5">
             <h2 className="font-serif text-[40px] md:text-[64px] leading-[1.05] tracking-tight text-[#111111]">
-              How Digital Assets Created New Wealth Opportunities For Technology Entrepreneurs
+              How Elon Musk Quietly Got Rich On Crypto
             </h2>
           </a>
           <p className="mt-6 text-[19px] leading-relaxed text-[#555555] max-w-3xl mx-auto" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>
-            A closer look at how emerging digital asset markets and technology investments transformed modern wealth creation.
+            Inside the unconventional Bitcoin, Dogecoin and corporate treasury bets that turned the world's most public entrepreneur into one of digital finance's biggest winners.
           </p>
           <div className="mt-6 flex items-center justify-center gap-3 text-[12px] text-[#555555] tracking-wide">
             <span>By Eleanor Whitfield</span>
             <span className="w-1 h-1 rounded-full bg-[#555555]" />
             <span>June 16, 2026</span>
             <span className="w-1 h-1 rounded-full bg-[#555555]" />
-            <span>14 min read</span>
+            <span>17 min read</span>
           </div>
         </div>
 
         <a {...openProps} className="block mt-12 group overflow-hidden">
           <img
             src={hero}
-            alt="Manhattan skyline at dusk with overlaid market data"
+            alt="Elon Musk in a podcast studio discussing markets"
             width={1920}
             height={1080}
             className="w-full h-auto transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
           />
           <p className="mt-3 text-[12px] text-[#555555] italic text-center">
-            The intersection of capital and code: lower Manhattan at dusk. Photograph for Market Frontier Journal.
+            Elon Musk during a recent long-form podcast appearance in which crypto, AI and payments were the dominant themes. Photograph for Market Frontier Journal.
           </p>
         </a>
       </section>
