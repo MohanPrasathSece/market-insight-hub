@@ -391,15 +391,36 @@ function Index() {
       {/* Footer */}
       <footer className="bg-[#111111] text-white">
         <div className="container-edit py-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-            <div>
-              <h4 className="font-serif text-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 mb-12 border-b border-white/10">
+            <div className="md:col-span-2">
+              <h4 className="font-serif text-3xl">
                 Market Frontier <span className="italic text-[#D4AF37]">Journal</span>
               </h4>
-              <p className="mt-3 text-[13px] text-white/60 leading-relaxed">
-                Financial intelligence for the modern investor. Editorial, research and analysis from a global newsroom.
+              <p className="mt-4 text-[14px] text-white/65 leading-relaxed max-w-xl">
+                Financial intelligence for the modern investor. Editorial, research and analysis from a global newsroom covering markets, technology and the digital asset economy.
               </p>
+              <div className="mt-6 flex flex-wrap gap-3 text-[11px] uppercase tracking-[0.2em] text-white/60">
+                <span className="px-3 py-1 border border-white/15 rounded-full">ISO 27001 Certified</span>
+                <span className="px-3 py-1 border border-white/15 rounded-full">Editorial Trust Charter</span>
+                <span className="px-3 py-1 border border-white/15 rounded-full">Member · WAN-IFRA</span>
+              </div>
             </div>
+            <div>
+              <h5 className="text-[11px] uppercase tracking-[0.24em] text-[#D4AF37] mb-4">Download Our App</h5>
+              <div className="flex flex-col gap-3">
+                <a {...openProps} className="px-4 py-3 border border-white/15 rounded-md text-[13px] hover:border-[#D4AF37] transition-colors">
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-white/50">Available on</span>
+                  <span className="block mt-0.5 font-serif text-lg">App Store</span>
+                </a>
+                <a {...openProps} className="px-4 py-3 border border-white/15 rounded-md text-[13px] hover:border-[#D4AF37] transition-colors">
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-white/50">Get it on</span>
+                  <span className="block mt-0.5 font-serif text-lg">Google Play</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-10">
             {FOOTER_COLS.map(([t, items]) => (
               <div key={t}>
                 <h5 className="text-[11px] uppercase tracking-[0.24em] text-[#D4AF37] mb-4">{t}</h5>
@@ -411,12 +432,21 @@ function Index() {
               </div>
             ))}
           </div>
-          <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-white/50">
+
+          <div className="mt-14 pt-8 border-t border-white/10 flex flex-col gap-6">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[12px] text-white/60">
+              <span className="uppercase tracking-[0.2em] text-[#D4AF37]">Global Editions</span>
+              {["United States", "United Kingdom", "European Union", "Asia", "Middle East", "Australia", "Latin America"].map((r) => (
+                <a key={r} {...openProps} className="hover:text-white">{r}</a>
+              ))}
+            </div>
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[12px] text-white/50">
             <p>© {new Date().getFullYear()} Market Frontier Journal. All rights reserved.</p>
             <div className="flex gap-5">
               {SOCIAL.map((s) => (
                 <a key={s} {...openProps} className="hover:text-[#D4AF37]">{s}</a>
               ))}
+            </div>
             </div>
           </div>
         </div>
