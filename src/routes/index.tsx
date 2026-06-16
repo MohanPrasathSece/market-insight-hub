@@ -17,10 +17,10 @@ import c12 from "@/assets/c12.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "How Elon Musk Quietly Got Rich On Crypto — Market Frontier Journal" },
-      { name: "description", content: "Inside the unconventional crypto bets that turned the world's most public entrepreneur into one of digital finance's biggest winners." },
-      { property: "og:title", content: "How Elon Musk Quietly Got Rich On Crypto" },
-      { property: "og:description", content: "Inside the unconventional crypto bets behind Elon Musk's digital asset fortune." },
+      { title: "The Swiss Maestro's Digital Playbook: Why Roger Federer is Quietly Venturing Into Crypto — Market Frontier Journal" },
+      { name: "description", content: "Roger Federer remains arguably the most universally liked Swiss figure, even after his retirement. Inside the private digital asset allocations and views on blockchain that are defining his post-court legacy." },
+      { property: "og:title", content: "The Swiss Maestro's Digital Playbook: Why Roger Federer is Quietly Venturing Into Crypto" },
+      { property: "og:description", content: "Inside the digital asset allocations behind Roger Federer's Swiss portfolio." },
     ],
   }),
   component: Index,
@@ -33,27 +33,27 @@ const NAV = ["Markets", "Business", "Technology", "Innovation", "Investing", "Di
 
 const TICKER = [
   "Bitcoin reclaims $110K as institutional flows accelerate",
-  "Elon Musk's Tesla still holds 9,720 BTC on its balance sheet",
-  "Dogecoin jumps 14% after fresh Musk podcast comments",
+  "Swiss National Bank explores SNB-backed digital currency pilots",
+  "Switzerland's Crypto Valley sees 24% surge in venture capital funding",
   "Spot Ethereum ETFs cross $30B in net inflows",
   "Stablecoin market cap pushes past $260B",
-  "SpaceX rumoured to retain undisclosed BTC position since 2021",
+  "Roger Federer podcast appearance sparks digital trust discussion",
   "AI trading desks now account for 41% of crypto spot volume",
 ];
 
 const SIDEBAR = [
-  ["Trending", ["Inside Tesla's quiet bitcoin reaccumulation", "How Dogecoin became Musk's longest crypto bet", "The Twitter / X payments roadmap explained", "Why SpaceX is the most secretive whale on chain", "The Musk effect: measuring a tweet in basis points"]],
-  ["Editor's Picks", ["The billionaire crypto playbook — five lessons", "A field guide to corporate treasury bitcoin", "How retail followed Musk into Dogecoin", "When public markets stop setting the price", "The infrastructure layer no one is pricing"]],
-  ["Most Read", ["Bitcoin at $110K: what changes for portfolios", "Ethereum's quiet institutional moment", "The new economics of meme coins", "Stablecoins and the future of dollar dominance", "What family offices are buying this quarter"]],
-  ["Research Briefings", ["Digital asset allocation models, Q4", "Corporate treasury crypto report", "Macro outlook and rate trajectory", "On-chain flows: institutional dashboard", "Cross-border crypto settlement quarterly"]],
+  ["Trending", ["Inside Switzerland's quiet crypto rise", "How Federer became the face of digital trust", "The Zug payments roadmap explained", "Why Federer's family office holds bitcoin", "The Swiss maestro effect: measuring trust in crypto"]],
+  ["Editor's Picks", ["The billionaire crypto playbook — five lessons", "A field guide to corporate treasury bitcoin", "How retail followed Federer into digital assets", "When public markets stop setting the price", "The infrastructure layer no one is pricing"]],
+  ["Most Read", ["Bitcoin at $110K: what changes for portfolios", "Switzerland's quiet institutional moment", "The new economics of digital trust", "Stablecoins and the future of Swiss franc dominance", "What family offices are buying this quarter"]],
+  ["Research Briefings", ["Digital asset allocation models, Q4", "Swiss treasury crypto report", "Macro outlook and rate trajectory", "On-chain flows: institutional dashboard", "Cross-border crypto settlement quarterly"]],
 ];
 
 const RELATED = [
   { cat: "Bitcoin", img: c1, title: "Bitcoin At $110K: The Quiet Rerating Of A Reserve Asset", sum: "Institutional flows have rewritten the demand side of the bitcoin market." },
   { cat: "Ethereum", img: c2, title: "Ethereum's Institutional Moment Has Finally Arrived", sum: "Spot ETFs, restaking and tokenised assets are reshaping the network's investor base." },
-  { cat: "Tesla", img: c3, title: "Why Tesla Is Still The Most Watched Crypto Treasury", sum: "Three years after its first BTC purchase, Tesla's balance sheet remains a benchmark." },
-  { cat: "SpaceX", img: c4, title: "Inside SpaceX's Long, Quiet Position In Bitcoin", sum: "What public filings reveal — and conceal — about Musk's most secretive bet." },
-  { cat: "Dogecoin", img: c5, title: "Dogecoin: How A Meme Became A Long-Duration Trade", sum: "The asset Musk has championed longest has quietly outperformed expectations." },
+  { cat: "Switzerland", img: c3, title: "Why Switzerland Is Still The Hub Of Crypto Wealth", sum: "Three years after its first regulatory framework, the nation's balance sheet remains a benchmark." },
+  { cat: "Philanthropy", img: c4, title: "Inside Federer's Quiet Position In Blockchain", sum: "What Swiss filings reveal — and conceal — about the tennis star's digital assets." },
+  { cat: "Trust", img: c5, title: "How Federer's Endorsement Defines Long-Duration Value", sum: "The assets Federer has championed have quietly outperformed expectations." },
   { cat: "Trading", img: c6, title: "Crypto Trading Desks Are Now Run Like Macro Funds", sum: "Inside the institutional turn at the world's largest digital asset venues." },
   { cat: "AI", img: c7, title: "How AI Models Are Reshaping Crypto Market Structure", sum: "Algorithmic flows now drive a majority of spot volume on top exchanges." },
   { cat: "Exchanges", img: c8, title: "The New Generation Of Regulated Crypto Venues", sum: "How custody, surveillance and compliance became the real moat." },
@@ -78,69 +78,69 @@ const FOOTER_COLS: Array<[string, string[]]> = [
 
 const SECTIONS: Array<{ h: string; p: string[] }> = [
   { h: "Introduction", p: [
-    "When historians eventually write the financial biography of Elon Musk, the chapter on cryptocurrency may end up being the most surprising. For all of the public attention paid to Tesla's share price and SpaceX's private valuation, a quieter story has been unfolding on chain — one in which the world's most photographed entrepreneur has compounded a parallel digital asset fortune through a mixture of corporate treasury moves, personal positions and an unmatched ability to move markets with a single sentence.",
-    "This article is not a fan profile. It is a sober attempt, drawing on filings, on-chain analytics and conversations with people who have worked alongside him, to map how Musk became one of the largest indirect beneficiaries of the last crypto cycle — and why his next moves are being watched as closely as any central bank's.",
+    "When historians eventually write the financial biography of Roger Federer, his quiet venture into cryptocurrency might end up being one of its most intriguing chapters. Roger Federer remains arguably the most universally liked Swiss figure, even after his retirement. In a world increasingly divided, the former world number one carries a brand of effortless grace and universal trust that transcends sports. Yet, behind the scenes of his post-tennis life, a quieter narrative is emerging. The Swiss Maestro is increasingly turning his focus toward the future of digital finance, participating in private allocations and exploring Switzerland's booming Crypto Valley in Zug.",
+    "This article is not a fan profile. It is a sober attempt, drawing on Swiss filings, blockchain developments, and conversations with people working alongside his family office, to map Federer's engagement with the digital asset space—and why his next moves are being watched closely by institutions and retail allocators alike.",
   ]},
-  { h: "From Skeptic To Whale", p: [
-    "Musk's public posture on cryptocurrency has shifted more than once. In 2018 he dismissed bitcoin as a curiosity. By early 2021 Tesla had committed $1.5 billion of corporate cash to BTC, briefly making it the most-followed corporate treasury position in the world. The reversal was not casual; it followed months of internal modelling on inflation, dollar debasement and what Musk's finance team began referring to in slide decks as 'optionality on a non-sovereign reserve.'",
-    "Although Tesla later sold a portion of that position, the residual holding — most recently disclosed at 9,720 BTC — has done most of the work. At today's prices, that single line item is worth more than the company's entire Q1 2021 net income.",
+  { h: "A Legacy of Trust in a Digital Age", p: [
+    "Federer's brand has always been built on stability, precision, and longevity. These are the exact qualities that the traditional financial world has often accused the cryptocurrency space of lacking. However, as digital assets mature, the intersection of Federer's brand and blockchain technology highlights a shifting paradigm: the search for institutional trust.",
+    "Switzerland has always been a hub of financial innovation and asset protection. Federer's venture is not a casual speculation; it follows months of internal modeling by his advisors on digital property rights, inflation hedges, and what Swiss wealth management circles refer to as 'trust-anchored digital allocations.'",
   ]},
-  { h: "The Tesla Treasury Trade", p: [
-    "The Tesla bitcoin purchase was, in retrospect, less a punt than a balance-sheet experiment. It tested whether a S&P 500 company could custody, mark and disclose a volatile digital asset without losing investor trust. The answer, eventually, was yes — and that quiet operational success has since been replicated by a growing list of corporate treasuries.",
-    "For Musk personally, the trade had a second-order benefit. It re-priced the public's perception of bitcoin as a legitimate corporate asset, and in doing so it lifted the value of every digital asset associated with him.",
+  { h: "The Swiss Crypto Valley Connection", p: [
+    "Switzerland’s Canton of Zug, known globally as 'Crypto Valley,' has become the epicenter of global blockchain development. For a Swiss icon like Federer, this local revolution was impossible to ignore. Several of Switzerland's leading digital asset managers and blockchain foundations have quietly consulted with Federer's family office on wealth preservation strategies in the digital age.",
+    "Although his public comments are rare, Federer's association with Switzerland's regulated digital banking ecosystem has done meaningful work. It has re-priced the public's perception of digital assets as legitimate, long-term reserves, and in doing so, it has lifted the value of every platform associated with Swiss-grade compliance.",
   ]},
   { h: "The Evolution Of Digital Finance", p: [
-    "Musk's crypto bets did not arrive in a vacuum. They tracked the broader maturation of digital finance: custody standards approaching institutional grade, regulators reluctantly accepting that the asset class was not going away, and a generation of allocators willing to underwrite the operational risk.",
-    "The most consequential change is structural. For the first time, a parallel settlement system exists alongside the traditional banking stack — and Musk, through SpaceX and X, is one of the few operators positioned at the intersection of payments, identity and on-chain value.",
+    "Federer's crypto interests did not arrive in a vacuum. They tracked the broader maturation of digital finance: custody standards approaching institutional grade, regulators reluctantly accepting that the asset class was not going away, and a generation of allocators willing to underwrite the operational risk.",
+    "The most consequential change is structural. For the first time, a parallel settlement system exists alongside the traditional banking stack — and Switzerland is one of the few jurisdictions positioned at the intersection of private wealth, identity, and compliant on-chain value.",
   ]},
-  { h: "The Dogecoin Position", p: [
-    "If bitcoin was the institutional trade, Dogecoin has been the cultural one. Musk's affinity for DOGE — repeatedly disclosed, often joked about, never quite walked back — has turned a meme coin into a long-duration narrative asset.",
-    "On any rational valuation framework Dogecoin should not exist. Yet the asset's market capitalisation has held within a remarkably stable band, and Musk's personal holdings (the subject of multiple class action settlements he ultimately prevailed in) have compounded with it.",
+  { h: "From Sports to Web3 and Tokenization", p: [
+    "Beyond direct holdings in major digital currencies like Bitcoin, Federer has expressed deep interest in the tokenization of real-world assets (RWAs). From art and real estate to sports memorabilia and intellectual property, the ability to fractionalize and secure ownership on public ledgers represents a massive shift in how value is stored and transferred.",
+    "On any rational valuation framework, the fractionalized asset market is poised for multi-trillion dollar growth. For Federer, the utility lies in democratizing access to assets that were previously out of reach, bridging the gap between his sporting heritage and digital technology.",
   ]},
-  { h: "SpaceX And The Quietest Whale On Chain", p: [
-    "SpaceX is privately held and discloses little. What it has disclosed, in passing, is that it acquired bitcoin in 2021 and wrote down a portion in 2022. On-chain analysts have long suspected the residual position is meaningful; some estimates place it above 8,000 BTC.",
-    "If those estimates are even directionally correct, SpaceX is one of the largest non-exchange holders of bitcoin in the world — a quiet whale moving in lockstep with the personal convictions of its founder.",
+  { h: "A Different Kind of Crypto Advocate", p: [
+    "Unlike other sports stars who promoted speculative tokens and faced subsequent regulatory backlash, Federer's involvement remains understated and focused on institutional-grade technology. He isn't selling a meme coin; he is engaging with the architecture of future financial systems.",
+    "This distinction is crucial. As retail investors look for guidance in a volatile market, the Swiss Maestro’s cautious, long-term perspective serves as a stabilizing influence, proving that digital assets have a place in even the most conservative portfolios.",
   ]},
-  { h: "The Twitter / X Payments Roadmap", p: [
-    "The 2022 acquisition of Twitter, since rebranded as X, gave Musk something more valuable than a megaphone: a regulated payments rail. The company has spent the last eighteen months quietly accumulating money transmitter licences across U.S. states, and has signalled that crypto rails will form part of its eventual settlement stack.",
-    "If X executes even half of its payments ambitions, it becomes one of the few consumer surfaces capable of moving digital assets at scale — and Musk one of the few founders to own both the asset and the distribution.",
+  { h: "The Swiss Payments Roadmap", p: [
+    "While US super-apps seek regulatory compliance, Swiss institutions have already integrated digital asset rails into mainstream banking. The Swiss National Bank's wholesale CBDC project and the launch of regulated crypto trading desks at major Swiss cantonal banks have shown that digital assets can live harmoniously inside the traditional system.",
+    "If European and Swiss institutions execute even half of their digital asset ambitions, they will form one of the few financial surfaces capable of moving digital assets at scale — and Federer is uniquely positioned at the gateway of this new financial frontier.",
   ]},
-  { h: "The Musk Effect On Markets", p: [
-    "Academic studies have now quantified what traders long suspected: a single Musk tweet can move bitcoin and dogecoin prices in measurable, sometimes multi-percent, increments. The 'Musk effect' is no longer anecdotal. It is a documented feature of market microstructure that desks at major venues now actively hedge.",
-    "For Musk himself, this creates an unusual second-order asset: optionality on his own voice. The value of his personal book is correlated with his willingness to comment.",
+  { h: "The Swiss Maestro Effect On Markets", p: [
+    "Market analysts have now quantified what wealth managers long suspected: endorsement by a trusted public figure can move digital asset adoption in measurable, sometimes multi-percent increments. The 'Swiss Maestro effect' is no longer anecdotal; it represents a new standard of trust that major digital asset managers now actively court.",
+    "For Federer himself, this creates an unusual second-order asset: optionality on his own reputation. The value of his associations is correlated with his reputation for flawless integrity.",
   ]},
   { h: "Investor Behaviour", p: [
-    "Musk's crypto journey has also reshaped retail behaviour. A generation of investors who came of age trading Tesla on Robinhood made the natural jump to Coinbase, and from there to dogecoin and beyond. The data is unambiguous: brokerage accounts that hold TSLA are dramatically more likely to also hold BTC, ETH or DOGE than the market average.",
+    "Federer's crypto journey has also reshaped retail behaviour. A generation of investors who viewed crypto as high-risk speculation are now seeing it through the lens of institutional wealth preservation. The data is unambiguous: accounts that follow Federer's philanthropic and investment updates are showing an increased openness to digital assets.",
   ]},
   { h: "Market Trends", p: [
-    "Three trends now matter most for Musk's digital asset portfolio: continued institutional adoption of bitcoin via spot ETFs, the maturation of ethereum as a settlement layer for tokenised assets, and the gradual integration of crypto rails into mainstream consumer payments.",
+    "Three trends now matter most for Swiss digital asset portfolios: continued institutional adoption of bitcoin via regulated custody, the maturation of tokenization layers for real-world assets, and the gradual integration of crypto rails into private banking systems.",
   ]},
   { h: "Institutional Participation", p: [
-    "Five years ago, the idea that a sovereign wealth fund might hold bitcoin was treated as a thought experiment. Today it is policy at several. The institutional cohort that once viewed Musk's Tesla treasury experiment as reckless now treats it as a precedent.",
+    "Five years ago, the idea that a Swiss private bank might hold bitcoin was treated as a speculative concept. Today it is standard service at several. The institutional cohort that once viewed digital assets as reckless now treats them as an essential hedge against inflation.",
   ]},
   { h: "Technology Entrepreneurs", p: [
-    "For technology entrepreneurs watching from the sidelines, the lesson of Musk's crypto returns is not 'buy bitcoin.' It is that operators who control distribution, brand and a willingness to underwrite balance-sheet experiments can capture an outsized share of the returns from a new asset class.",
+    "For technology entrepreneurs watching from Switzerland, the lesson of Federer's digital playbook is not 'buy crypto.' It is that operators who control trust, brand, and a willingness to underwrite balance-sheet innovations can capture an outsized share of the returns from the next financial stack.",
   ]},
   { h: "The Role Of AI In Modern Markets", p: [
-    "Musk's parallel investments in artificial intelligence — xAI, the rebuilt compute clusters at Tesla, and the lingering equity stake from his early role at OpenAI — increasingly overlap with the crypto stack. AI-driven trading desks now handle a meaningful share of digital asset volume, and Musk sits closer than any other founder to both ends of that trade.",
+    "Federer's tech allocations increasingly overlap with artificial intelligence and digital asset infrastructure. AI-driven portfolios now manage a meaningful share of Swiss wealth, and his family office sits close to the intersection of automated asset management and blockchain tech.",
   ]},
   { h: "Future Outlook", p: [
-    "Where does the Musk crypto story go from here? Most plausibly: deeper integration. The payments rails inside X, the treasury policies at Tesla, the unspoken position at SpaceX, and the AI infrastructure at xAI are converging on a single thesis — that programmable money will be the substrate of the next generation of consumer and capital markets technology.",
+    "Where does the Federer crypto story go from here? Most plausibly: deeper integration with his philanthropic efforts. The Roger Federer Foundation, which supports early education programs in Southern Africa and Switzerland, could eventually leverage decentralized rails for cross-border philanthropy, ensuring that funds reach their destinations with minimal friction and maximum transparency.",
   ]},
   { h: "Expert Commentary", p: [
-    "“Elon's real edge in crypto was never timing,” one fund manager who has tracked his positions since 2021 told this publication. “It was that he was willing to put a public balance sheet behind a private conviction at a moment when nobody else would.”",
+    "“Roger's real edge in crypto was never timing,” one Swiss asset manager who has tracked his positions told this publication. “It was that he brought absolute trust and legitimacy to a sector that desperately needed both, aligning his family office with the safest regulatory frameworks in the world.”",
   ]},
   { h: "Risk Considerations", p: [
-    "None of this should be read as an endorsement of any single position. Liquidity in digital markets remains uneven. Regulatory regimes are still converging. The same volatility that has rewarded Musk's positions has also wiped out less patient capital. Concentration risk — particularly around any single named founder — is a feature of this market, not a bug.",
+    "None of this should be read as an endorsement of any single position. Liquidity in digital markets remains uneven. Regulatory regimes are still converging. The same volatility that defines digital assets has also wiped out less patient capital. Trust, particularly around any single named figure, is a feature of this market, not a bug.",
   ]},
   { h: "Market Forecast", p: [
-    "Our base case for the coming year is one of continued, measured institutionalisation, with bitcoin and ethereum capturing the bulk of regulated inflows. Dogecoin, the asset most directly tied to Musk personally, will likely continue to trade more on narrative than on fundamentals.",
+    "Our base case for the coming year is one of continued, measured institutionalisation in Switzerland, with bitcoin and tokenized real-world assets capturing the bulk of regulated inflows. The Swiss franc-backed stablecoins will likely continue to trade more on stability than on speculative narrative.",
   ]},
   { h: "Innovation Roadmap", p: [
-    "Three areas warrant close attention: stablecoin-based consumer payments inside super-apps such as X, AI-native portfolio construction tools that draw on on-chain data, and the gradual on-chaining of corporate treasuries beyond the early Tesla template.",
+    "Three areas warrant close attention: stablecoin-based consumer payments inside European apps, AI-native portfolio construction tools drawing on Swiss on-chain data, and the gradual on-chaining of traditional family office assets.",
   ]},
   { h: "Conclusion", p: [
-    "The story of Elon Musk and crypto is, at its core, a story about the convergence of brand, balance sheet and conviction. The headlines will continue to focus on price. The more durable shift is the one taking place quietly across his portfolio, and across the institutions that increasingly take their cues from it.",
+    "The story of Roger Federer and crypto is, at its core, a story about the convergence of brand, trust, and structural innovation. The headlines will continue to focus on price. The more durable shift is the one taking place quietly across his portfolio, and across the institutions that increasingly take their cues from Swiss-grade excellence.",
   ]},
 ];
 
@@ -206,31 +206,31 @@ function Index() {
           </a>
           <a {...openProps} className="block mt-5">
             <h2 className="font-serif text-[40px] md:text-[64px] leading-[1.05] tracking-tight text-[#111111]">
-              How Elon Musk Quietly Got Rich On Crypto
+              The Swiss Maestro's Digital Playbook: Why Roger Federer is Quietly Venturing Into Crypto
             </h2>
           </a>
           <p className="mt-6 text-[19px] leading-relaxed text-[#555555] max-w-3xl mx-auto" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>
-            Inside the unconventional Bitcoin, Dogecoin and corporate treasury bets that turned the world's most public entrepreneur into one of digital finance's biggest winners.
+            Roger Federer remains arguably the most universally liked Swiss figure, even after his retirement. Inside the private digital asset allocations and views on blockchain that are defining his post-court legacy.
           </p>
           <div className="mt-6 flex items-center justify-center gap-3 text-[12px] text-[#555555] tracking-wide">
             <span>By Eleanor Whitfield</span>
             <span className="w-1 h-1 rounded-full bg-[#555555]" />
             <span>June 16, 2026</span>
             <span className="w-1 h-1 rounded-full bg-[#555555]" />
-            <span>17 min read</span>
+            <span>12 min read</span>
           </div>
         </div>
 
         <a {...openProps} className="block mt-12 group overflow-hidden">
           <img
             src={hero}
-            alt="Elon Musk in a podcast studio discussing markets"
+            alt="Roger Federer in a podcast studio discussing digital assets"
             width={1920}
             height={1080}
             className="w-full h-auto transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
           />
           <p className="mt-3 text-[12px] text-[#555555] italic text-center">
-            Elon Musk during a recent long-form podcast appearance in which crypto, AI and payments were the dominant themes. Photograph for Market Frontier Journal.
+            Roger Federer during a recent long-form podcast appearance in which crypto, trust, and Swiss financial innovation were the dominant themes. Photograph for Market Frontier Journal.
           </p>
         </a>
       </section>
