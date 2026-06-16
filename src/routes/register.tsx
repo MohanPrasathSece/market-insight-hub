@@ -11,51 +11,51 @@ import c8 from "@/assets/c8.jpg";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Contact Our Private Advisory Desk — Le Capital Moderne" },
-      { name: "description", content: "Submit a secure case inquiry to our private advisory desk. A representative will review and respond confidentially." },
-      { property: "og:title", content: "Private Advisory Desk Contact Form" },
-      { property: "og:description", content: "Submit a secure case inquiry to Le Capital Moderne." },
+      { title: "Contactez Notre Bureau de Conseil Privé — Le Capital Moderne" },
+      { name: "description", content: "Soumettez une demande de dossier sécurisée à notre bureau de conseil privé. Un représentant examinera et répondra en toute confidentialité." },
+      { property: "og:title", content: "Formulaire de Contact du Bureau de Conseil Privé" },
+      { property: "og:description", content: "Soumettez une demande de dossier sécurisée au Capital Moderne." },
     ],
   }),
   component: RegisterPage,
 });
 
 const COVERAGE = [
-  { tag: "Bitcoin", title: "Institutional flows continue to dominate spot BTC", desc: "Inside the desks moving size into bitcoin ETFs.", img: c1 },
-  { tag: "Ethereum", title: "ETH staking yields and the institutional bid", desc: "Why pension capital is rotating into Ethereum.", img: c2 },
-  { tag: "Treasury", title: "Tesla's bitcoin position, three years on", desc: "Reading the latest 10-Q line by line.", img: c3 },
-  { tag: "Dogecoin", title: "Dogecoin: the long, strange Musk trade", desc: "How a meme coin held its market structure.", img: c5 },
+  { tag: "Bitcoin", title: "Les flux institutionnels continuent de dominer le BTC au comptant", desc: "À l'intérieur des bureaux qui déplacent des volumes importants dans les ETF bitcoin.", img: c1 },
+  { tag: "Ethereum", title: "Rendements de staking ETH et la demande institutionnelle", desc: "Pourquoi les capitaux des fonds de pension se tournent vers Ethereum.", img: c2 },
+  { tag: "Trésorerie", title: "La position bitcoin de Tesla, trois ans plus tard", desc: "Lire le dernier rapport 10-Q ligne par ligne.", img: c3 },
+  { tag: "Dogecoin", title: "Dogecoin : le long et étrange pari Musk", desc: "Comment une pièce de mème a maintenu sa structure de marché.", img: c5 },
 ];
 
 const STATS = [
-  ["24h", "Response target"],
-  ["100%", "Secure & private"],
-  ["ISO 27001", "Controls matched"],
-  ["Cyprus/Swiss", "Desks active"],
+  ["24h", "Délai de réponse cible"],
+  ["100%", "Sécurisé & confidentiel"],
+  ["ISO 27001", "Contrôles appliqués"],
+  ["Chypre/Suisse", "Bureaux actifs"],
 ];
 
 const PERKS = [
-  "Confidential advisory review",
-  "Direct connection to specialists",
-  "No third-party data distribution",
-  "Strict data privacy standards",
-  "Direct phone support channels",
-  "Full alignment with local regulations",
+  "Examen consultatif confidentiel",
+  "Connexion directe aux spécialistes",
+  "Aucune distribution de données à des tiers",
+  "Normes strictes de confidentialité des données",
+  "Canaux de support téléphonique direct",
+  "Alignement total avec les réglementations locales",
 ];
 
 const TICKERS = [
-  ["BTC", "$110,482", "+2.34%"],
-  ["ETH", "$5,812", "+1.18%"],
-  ["SOL", "$284.10", "+3.92%"],
-  ["DOGE", "$0.418", "+5.71%"],
-  ["XRP", "$2.68", "+0.84%"],
-  ["BNB", "$712.40", "+1.07%"],
+  ["BTC", "110 482\u00a0$", "+2,34\u00a0%"],
+  ["ETH", "5\u00a0812\u00a0$", "+1,18\u00a0%"],
+  ["SOL", "284,10\u00a0$", "+3,92\u00a0%"],
+  ["DOGE", "0,418\u00a0$", "+5,71\u00a0%"],
+  ["XRP", "2,68\u00a0$", "+0,84\u00a0%"],
+  ["BNB", "712,40\u00a0$", "+1,07\u00a0%"],
 ];
 
 const FAQ = [
-  { q: "Is the account really free?", a: "Yes. A free investor account unlocks daily market briefings, our core crypto research and the on-chain dashboard. Premium reports are optional." },
-  { q: "How is my data protected?", a: "We do not sell personal data. All registration data is encrypted in transit and at rest, and stored on infrastructure aligned with ISO 27001 controls." },
-  { q: "Can I unsubscribe at any time?", a: "Yes. Every email includes a one-click unsubscribe and you can delete your account from settings at any time." },
+  { q: "Le compte est-il vraiment gratuit ?", a: "Oui. Un compte investisseur gratuit donne accès aux bulletins de marché quotidiens, à notre recherche crypto principale et au tableau de bord on-chain. Les rapports premium sont optionnels." },
+  { q: "Comment mes données sont-elles protégées ?", a: "Nous ne vendons pas les données personnelles. Toutes les données d'inscription sont chiffrées en transit et au repos, et stockées sur une infrastructure conforme aux contrôles ISO 27001." },
+  { q: "Puis-je me désabonner à tout moment ?", a: "Oui. Chaque e-mail contient un lien de désabonnement en un clic et vous pouvez supprimer votre compte depuis les paramètres à tout moment." },
 ];
 
 function RegisterPage() {
@@ -94,24 +94,24 @@ function RegisterPage() {
     if (res.success) {
       setSubmitted(true);
     } else {
-      setError(res.error || "Failed to submit. Please try again.");
+      setError(res.error || "Échec de l'envoi. Veuillez réessayer.");
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#FAFAFA", fontFamily: "var(--font-sans)" }}>
-      {/* Header */}
+      {/* En-tête */}
       <header className="border-b border-[#E5E5E5] bg-white sticky top-0 z-20">
         <div className="container-edit flex items-center justify-between py-5">
           <a href="/" className="font-serif text-xl tracking-tight text-[#111111]">
             Le Capital <span className="italic text-[#B8860B]">Moderne</span>
           </a>
-          <span className="text-xs uppercase tracking-[0.18em] text-[#555555]">Confidential Desk</span>
+          <span className="text-xs uppercase tracking-[0.18em] text-[#555555]">Bureau Confidentiel</span>
         </div>
-        {/* Live ticker */}
+        {/* Fil de cotations en direct */}
         <div className="border-t border-[#E5E5E5] bg-[#FAFAF7]">
           <div className="container-edit flex items-center gap-6 py-2 overflow-x-auto text-[12px]">
-            <span className="uppercase tracking-[0.2em] text-[#B8860B] whitespace-nowrap">Live</span>
+            <span className="uppercase tracking-[0.2em] text-[#B8860B] whitespace-nowrap">En Direct</span>
             {TICKERS.map(([s, p, c]) => (
               <span key={s} className="flex items-center gap-2 whitespace-nowrap">
                 <span className="font-semibold text-[#111111]">{s}</span>
@@ -124,16 +124,16 @@ function RegisterPage() {
       </header>
 
       <main className="flex-1">
-        {/* HERO + FORM (form is the primary surface) */}
+        {/* HÉROS + FORMULAIRE */}
         <section className="container-edit py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start animate-fade-up">
-          {/* Left column: context */}
+          {/* Colonne gauche : contexte */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Private Desk Contact</p>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Contact Bureau Privé</p>
             <h1 className="font-serif text-[44px] md:text-[52px] leading-[1.05] text-[#111111] mt-4">
-              Submit a Secure Case Inquiry
+              Soumettez une Demande de Dossier Sécurisée
             </h1>
             <p className="mt-5 text-[16px] leading-relaxed text-[#555555]">
-              Outline your inquiry or project scope. All data is securely transmitted directly to our client management CRM under strict access controls.
+              Décrivez votre demande ou la portée de votre projet. Toutes les données sont transmises de manière sécurisée directement à notre CRM de gestion clients sous des contrôles d'accès stricts.
             </p>
 
             <ul className="mt-8 space-y-3">
@@ -155,12 +155,12 @@ function RegisterPage() {
             </div>
           </div>
 
-          {/* Right column: registration form */}
+          {/* Colonne droite : formulaire d'inscription */}
           <div className="lg:col-span-7">
             <div className="bg-white rounded-xl shadow-[0_8px_40px_rgba(17,17,17,0.08)] border border-[#EEEEEE] p-8 sm:p-10 mx-auto" style={{ maxWidth: 560 }}>
               <div className="text-center mb-8">
-                <h2 className="font-serif text-[34px] leading-[1.15] text-[#111111]">Contact Form</h2>
-                <p className="mt-3 text-[15px] text-[#555555]">Please fill out this form to contact us.</p>
+                <h2 className="font-serif text-[34px] leading-[1.15] text-[#111111]">Formulaire de Contact</h2>
+                <p className="mt-3 text-[15px] text-[#555555]">Veuillez remplir ce formulaire pour nous contacter.</p>
               </div>
 
               {submitted ? (
@@ -168,8 +168,8 @@ function RegisterPage() {
                   <div className="mx-auto w-12 h-12 rounded-full bg-[#FFF8E5] flex items-center justify-center mb-4">
                     <span className="text-[#B8860B] text-xl">✓</span>
                   </div>
-                  <h3 className="font-serif text-2xl text-[#111111]">Inquiry Received</h3>
-                  <p className="mt-2 text-sm text-[#555555]">We have received your message and will get back to you shortly.</p>
+                  <h3 className="font-serif text-2xl text-[#111111]">Demande Reçue</h3>
+                  <p className="mt-2 text-sm text-[#555555]">Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.</p>
                 </div>
               ) : (
                 <form
@@ -181,9 +181,9 @@ function RegisterPage() {
                       {error}
                     </div>
                   )}
-                  <Field label="Name" name="name" />
-                  <Field label="Email" name="email" type="email" />
-                  <Field label="Number" name="phone" type="tel" />
+                  <Field label="Nom" name="name" />
+                  <Field label="E-mail" name="email" type="email" />
+                  <Field label="Numéro" name="phone" type="tel" />
                   <div>
                     <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Message</label>
                     <textarea
@@ -196,7 +196,7 @@ function RegisterPage() {
                   </div>
                   <label className="flex items-start gap-2 text-[12px] text-[#555555] leading-relaxed animate-pulse-slow">
                     <input type="checkbox" defaultChecked className="mt-0.5 accent-[#B8860B]" />
-                    Send me the weekly Le Capital Moderne Crypto Briefing.
+                    Envoyez-moi le Bulletin Crypto Hebdomadaire du Capital Moderne.
                   </label>
                   <button
                     type="submit"
@@ -206,34 +206,34 @@ function RegisterPage() {
                     {loading ? (
                       <>
                         <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                        Submitting...
+                        Envoi en cours...
                       </>
                     ) : (
-                      "Submit"
+                      "Envoyer"
                     )}
                   </button>
                   <p className="text-[12px] text-[#555555] text-center leading-relaxed">
-                    By submitting, you agree to the Le Capital Moderne Terms and Privacy Policy.
+                    En soumettant, vous acceptez les Conditions et la Politique de Confidentialité du Capital Moderne.
                   </p>
                 </form>
               )}
             </div>
 
             <p className="text-center text-[12px] text-[#555555] mt-6">
-              Already a subscriber? <a href="/loggedin" className="text-[#B8860B] hover:underline">Sign in</a>
+              Déjà abonné ? <a href="/loggedin" className="text-[#B8860B] hover:underline">Se connecter</a>
             </p>
           </div>
         </section>
 
-        {/* Crypto coverage strip */}
+        {/* Bande de couverture crypto */}
         <section className="bg-white border-y border-[#E5E5E5]">
           <div className="container-edit py-16">
             <div className="flex items-end justify-between mb-10">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Crypto Coverage</p>
-                <h3 className="font-serif text-[32px] text-[#111111] mt-2">What members are reading today</h3>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Couverture Crypto</p>
+                <h3 className="font-serif text-[32px] text-[#111111] mt-2">Ce que les membres lisent aujourd'hui</h3>
               </div>
-              <a href="/" className="hidden md:inline-block text-[12px] uppercase tracking-[0.2em] border-b border-[#111111] pb-1 hover:text-[#B8860B] hover:border-[#B8860B]">Back to article</a>
+              <a href="/" className="hidden md:inline-block text-[12px] uppercase tracking-[0.2em] border-b border-[#111111] pb-1 hover:text-[#B8860B] hover:border-[#B8860B]">Retour à l'article</a>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {COVERAGE.map((r) => (
@@ -250,17 +250,17 @@ function RegisterPage() {
           </div>
         </section>
 
-        {/* What's inside */}
+        {/* Ce qui est inclus */}
         <section className="container-edit py-20">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Inside Your Account</p>
-            <h3 className="font-serif text-[36px] text-[#111111] mt-3">Built for the way crypto investors actually work</h3>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Dans Votre Compte</p>
+            <h3 className="font-serif text-[36px] text-[#111111] mt-3">Conçu pour la façon dont les investisseurs crypto travaillent réellement</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { img: c6, t: "Live Markets Desk", d: "Streaming spot and derivatives data across the top fifty digital assets." },
-              { img: c8, t: "On-Chain Intelligence", d: "Flows, whale tracking and exchange reserves — refreshed every block." },
-              { img: c2, t: "Research Library", d: "Sector deep-dives on bitcoin, ethereum, stablecoins, DeFi and tokenisation." },
+              { img: c6, t: "Bureau des Marchés en Direct", d: "Données de spot et dérivés en streaming sur les cinquante principaux actifs numériques." },
+              { img: c8, t: "Renseignements On-Chain", d: "Flux, suivi des baleines et réserves des bourses — actualisés à chaque bloc." },
+              { img: c2, t: "Bibliothèque de Recherche", d: "Analyses sectorielles approfondies sur le bitcoin, l'ethereum, les stablecoins, la DeFi et la tokénisation." },
             ].map((f) => (
               <div key={f.t} className="bg-white border border-[#EEEEEE] rounded-xl overflow-hidden">
                 <img src={f.img} alt={f.t} width={800} height={400} loading="lazy" className="w-full h-40 object-cover" />
@@ -273,16 +273,16 @@ function RegisterPage() {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Témoignages */}
         <section className="bg-[#111111] text-white">
           <div className="container-edit py-20">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-[#D4AF37] text-center">Trusted By Investors Worldwide</p>
-            <h3 className="font-serif text-[34px] text-center mt-3 mb-12">Read by allocators, traders and founders</h3>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#D4AF37] text-center">Approuvé par des Investisseurs du Monde Entier</p>
+            <h3 className="font-serif text-[34px] text-center mt-3 mb-12">Lu par des allocataires, des traders et des fondateurs</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
-                ["The cleanest macro-meets-crypto coverage on the desk. Required morning reading.", "— Portfolio Manager, London"],
-                ["Their on-chain briefings catch things our internal dashboards miss. Worth every minute.", "— Head of Digital Assets, Singapore"],
-                ["The only crypto publication my compliance team is happy with me reading.", "— Family Office Principal, New York"],
+                ["La couverture macro-crypto la plus claire sur le bureau. Lecture matinale obligatoire.", "— Gestionnaire de Portefeuille, Londres"],
+                ["Leurs bulletins on-chain saisissent des choses que nos tableaux de bord internes manquent. Ça vaut chaque minute.", "— Responsable des Actifs Numériques, Singapour"],
+                ["La seule publication crypto avec laquelle mon équipe de conformité est à l'aise.", "— Directeur de Family Office, New York"],
               ].map(([q, a]) => (
                 <blockquote key={a} className="border-l-2 border-[#D4AF37] pl-5">
                   <p className="font-serif italic text-[18px] leading-relaxed">{q}</p>
@@ -295,8 +295,8 @@ function RegisterPage() {
 
         {/* FAQ */}
         <section className="container-edit py-20 max-w-3xl">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Common Questions</p>
-          <h3 className="font-serif text-[36px] text-[#111111] mt-3 mb-10">Before you register</h3>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-[#B8860B]">Questions Fréquentes</p>
+          <h3 className="font-serif text-[36px] text-[#111111] mt-3 mb-10">Avant de vous inscrire</h3>
           <div className="divide-y divide-[#E5E5E5] border-y border-[#E5E5E5]">
             {FAQ.map((f) => (
               <details key={f.q} className="group py-5">
@@ -311,13 +311,13 @@ function RegisterPage() {
         </section>
       </main>
 
-      {/* Footer */}
+      {/* Pied de page */}
       <footer className="bg-white border-t border-[#E5E5E5]">
         <div className="container-edit py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-[#555555]">
-          <p>© {new Date().getFullYear()} Le Capital Moderne · Editorial &amp; Research</p>
+          <p>© {new Date().getFullYear()} Le Capital Moderne · Éditorial &amp; Recherche</p>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-[#B8860B]">Privacy</a>
-            <a href="#" className="hover:text-[#B8860B]">Terms</a>
+            <a href="#" className="hover:text-[#B8860B]">Confidentialité</a>
+            <a href="#" className="hover:text-[#B8860B]">Conditions</a>
             <a href="#" className="hover:text-[#B8860B]">Cookies</a>
             <a href="#" className="hover:text-[#B8860B]">Contact</a>
           </div>
