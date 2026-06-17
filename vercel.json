@@ -1,9 +1,7 @@
 {
-  "cleanUrls": true,
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/register", "destination": "/index.html" },
+    { "source": "/loggedin", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
