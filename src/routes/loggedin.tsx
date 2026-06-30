@@ -80,20 +80,23 @@ function LoggedInPortal() {
     const phone = formData.get("phone") as string;
     const message = formData.get("message") as string;
 
-    const nameParts = name.trim().split(/\s+/);
-    const firstName = nameParts[0] || "";
-    const lastName = nameParts.slice(1).join(" ") || "";
+    const cleanNum = phone.replace(/\s+/g, "");
+    if (!cleanNum) {
+      setError("Veuillez entrer un numéro de téléphone");
+      setLoading(false);
+      return;
+    } else if (!/^(\+41|0041|0)?[1-9]\d{8}$/.test(cleanNum)) {
+      setError("Veuillez entrer un numéro suisse valide (ex: 079 123 45 67)");
+      setLoading(false);
+      return;
+    }
 
     const res = await submitToCRM({
-      first_name: firstName,
-      last_name: lastName,
+      name: name,
       email: email,
-      phone: phone,
-      country_name: "cy",
-      description: message,
-      source_id: "partner_portal",
-      how_much_invested: "0",
-      outline_your_case: message
+      number: phone,
+      message: message,
+      how_much_invested: "0"
     });
 
     setLoading(false);

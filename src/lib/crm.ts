@@ -1,13 +1,9 @@
 export interface CRMLeadData {
-  first_name: string;
-  last_name: string;
+  name: string;
   email: string;
-  phone: string;
-  country_name: string;
-  description: string;
-  source_id?: string;
+  number: string;
+  message?: string;
   how_much_invested?: string;
-  outline_your_case?: string;
 }
 
 export async function submitToCRM(data: CRMLeadData): Promise<{ success: boolean; error?: string }> {
@@ -15,17 +11,39 @@ export async function submitToCRM(data: CRMLeadData): Promise<{ success: boolean
   const url = import.meta.env.VITE_CRM_URL || "https://inwo.crmcore.me/api/lead_management/api/affiliates";
   const token = import.meta.env.VITE_CRM_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
 
+  const [first_name, ...lastNameParts] = (data.name || "Unknown").trim().split(" ");
+  const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "Lead";
+
+  let phone = (data.number || "").replace(/[^0-9+]/g, '');
+  if (phone) {
+    if (phone.startsWith('+')) {
+      phone = '00' + phone.slice(1);
+    }
+    if (phone.startsWith('41') && phone.length === 11) {
+      phone = '00' + phone;
+    }
+    if (!phone.startsWith('0041')) {
+      if (phone.startsWith('0') && !phone.startsWith('00')) {
+        phone = '0041' + phone.slice(1);
+      } else if (!phone.startsWith('00')) {
+        phone = '0041' + phone;
+      }
+    }
+  } else {
+    phone = "0000000000";
+  }
+
   const payload = {
-    first_name: data.first_name,
-    last_name: data.last_name,
+    first_name: first_name,
+    last_name: last_name,
     email: data.email,
-    phone: data.phone,
-    country_name: data.country_name || "cy",
-    description: data.description || "Submitted via Le Capital Moderne website",
+    phone: phone,
+    country_name: "ch",
+    description: data.message || "Signup Lead",
     custom_fields: {
-      Source_ID: data.source_id || "web",
+      Source_ID: "website",
       How_Much_Invested: data.how_much_invested || "0",
-      Outline_Your_Case: data.outline_your_case || data.description || ""
+      Outline_Your_Case: data.message || ""
     }
   };
 
