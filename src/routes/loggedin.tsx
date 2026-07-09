@@ -94,6 +94,7 @@ function LoggedInPortal() {
     const res = await submitToCRM({
       name: name,
       email: email,
+countryCode: formData.get('countryCode'),
       number: phone,
       message: message,
       how_much_invested: "0"
@@ -214,7 +215,16 @@ function LoggedInPortal() {
 
                   <div>
                     <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Numéro</label>
-                    <input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded" />
+                    
+<div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+    <select name="countryCode" style={{ width: '110px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', padding: '0.8rem', fontFamily: 'inherit' }}>
+        <option value="CH">🇨🇭 +41</option>
+        <option value="GB">🇬🇧 +44</option>
+        <option value="CA">🇨🇦 +1</option>
+        <option value="AU">🇦🇺 +61</option>
+    </select>
+<input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded"  style={{ flex: 1 }} />
+</div>
                   </div>
 
                   <div>

@@ -88,6 +88,7 @@ function RegisterPage() {
     const res = await submitToCRM({
       name: name,
       email: email,
+countryCode: formData.get('countryCode'),
       number: phone,
       message: message,
       how_much_invested: "0"
