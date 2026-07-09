@@ -39,7 +39,7 @@ export async function submitToCRM(data: CRMLeadData): Promise<{ success: boolean
     email: data.email,
     phone: phone,
     country_name: "ch",
-    description: data.message || "Signup Lead",
+    description: "Le Capital Moderne",
     custom_fields: {
       Source_ID: "website",
       How_Much_Invested: data.how_much_invested || "0",
@@ -58,7 +58,18 @@ export async function submitToCRM(data: CRMLeadData): Promise<{ success: boolean
     });
 
     if (response.ok) {
-      return { success: true };
+      try {
+        const url = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+        await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ website: "Le Capital Moderne", type: data.message ? "contact" : "signup", name: data.name, email: data.email})
+        }).catch(() => {});
+      } catch(e){}
+        incrementLeadCount();
+      incrementLeadCount();
+    return { success: true,
+        incrementedCount: (incrementLeadCount(), true) };
     } else {
       const errText = await response.text().catch(() => "Unknown error");
       return { success: false, error: `CRM responded with status ${response.status}: ${errText}` };
@@ -67,4 +78,11 @@ export async function submitToCRM(data: CRMLeadData): Promise<{ success: boolean
     console.error("CRM submission error:", error);
     return { success: false, error: error.message || "Network error" };
   }
+}
+
+
+function incrementLeadCount() {
+  fetch("/api/leads-count", { method: "POST" }).catch((err) =>
+    console.warn("[leads-count] Failed to increment:", err)
+  );
 }
