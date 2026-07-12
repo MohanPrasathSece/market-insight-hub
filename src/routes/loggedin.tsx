@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { submitToCRM } from "@/lib/crm";
+import { COUNTRY_PHONE_PATTERNS } from "./register";
 import c9 from "@/assets/c9.jpg";
 import c10 from "@/assets/c10.jpg";
 import c11 from "@/assets/c11.jpg";
 import c12 from "@/assets/c12.jpg";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const Route = createFileRoute("/loggedin")({
   head: () => ({
@@ -78,15 +80,18 @@ function LoggedInPortal() {
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
+    const countryCode = formData.get("countryCode") as string || "CH";
     const message = formData.get("message") as string;
 
     const cleanNum = phone.replace(/\s+/g, "");
+    const patternInfo = COUNTRY_PHONE_PATTERNS[countryCode] || COUNTRY_PHONE_PATTERNS.CH;
+    
     if (!cleanNum) {
       setError("Veuillez entrer un numéro de téléphone");
       setLoading(false);
       return;
-    } else if (!/^(\+41|0041|0)?[1-9]\d{8}$/.test(cleanNum)) {
-      setError("Veuillez entrer un numéro suisse valide (ex: 079 123 45 67)");
+    } else if (!patternInfo.pattern.test(cleanNum)) {
+      setError(`Veuillez entrer un numéro valide (ex: ${patternInfo.example})`);
       setLoading(false);
       return;
     }
@@ -94,10 +99,11 @@ function LoggedInPortal() {
     const res = await submitToCRM({
       name: name,
       email: email,
-countryCode: formData.get('countryCode'),
+      countryCode: countryCode,
       number: phone,
       message: message,
-      how_much_invested: "0"
+      how_much_invested: "0",
+      leadType: "contact"
     });
 
     setLoading(false);
@@ -216,20 +222,24 @@ countryCode: formData.get('countryCode'),
                   <div>
                     <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Numéro</label>
                     
-<div style={{ display: 'flex', gap: '8px', width: '100%' }}>
-    <select name="countryCode" style={{ width: '110px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', padding: '0.8rem', fontFamily: 'inherit' }}>
-        <option value="CH">🇨🇭 +41</option>
-        <option value="GB">🇬🇧 +44</option>
-        <option value="CA">🇨🇦 +1</option>
-        <option value="AU">🇦🇺 +61</option>
-    </select>
-<input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition rounded"  style={{ flex: 1 }} />
-</div>
+                    <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+                      <Select name="countryCode" defaultValue="CH">
+                        <SelectTrigger className="w-[110px] h-11 bg-[rgba(0,0,0,0.03)] border-[#E5E5E5] text-[#111] rounded outline-none focus:ring-2 focus:ring-[#B8860B]/15">
+                          <SelectValue placeholder="Pays" />
+                        </SelectTrigger>
+                        <SelectContent position="popper" side="bottom" className="max-h-[300px]">
+                          {Object.entries(COUNTRY_PHONE_PATTERNS).map(([code, info]) => (
+                              <SelectItem key={code} value={code}>{code} +{info.code}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/15 transition rounded text-[15px] text-[#111111]" style={{ flex: 1 }} />
+                    </div>
                   </div>
 
                   <div>
                     <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Message</label>
-                    <textarea name="message" required rows={4} placeholder="Message" className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none rounded"></textarea>
+                    <textarea name="message" rows={4} placeholder="Message" className="w-full p-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] transition resize-none rounded"></textarea>
                   </div>
 
                   <button

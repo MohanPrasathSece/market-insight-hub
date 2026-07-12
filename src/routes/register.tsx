@@ -7,6 +7,30 @@ import c3 from "@/assets/c3.jpg";
 import c5 from "@/assets/c5.jpg";
 import c6 from "@/assets/c6.jpg";
 import c8 from "@/assets/c8.jpg";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+export const COUNTRY_PHONE_PATTERNS: Record<string, { code: string; pattern: RegExp; example: string }> = {
+  CH: { code: "41", pattern: /^(0)?[1-9]\d{8}$/, example: "079 123 45 67" },
+  FR: { code: "33", pattern: /^(0)?[1-9]\d{8}$/, example: "06 12 34 56 78" },
+  BE: { code: "32", pattern: /^(0)?[1-9]\d{7,8}$/, example: "0470 12 34 56" },
+  CA: { code: "1", pattern: /^[2-9]\d{9}$/, example: "416 123 4567" },
+  US: { code: "1", pattern: /^[2-9]\d{9}$/, example: "212 123 4567" },
+  GB: { code: "44", pattern: /^(0)?[7-9]\d{9}$/, example: "07700 900000" },
+  DE: { code: "49", pattern: /^(0)?[1-9]\d{10,11}$/, example: "0151 12345678" },
+  ES: { code: "34", pattern: /^[679]\d{8}$/, example: "612 345 678" },
+  IT: { code: "39", pattern: /^[3]\d{8,9}$/, example: "312 345 6789" },
+  NL: { code: "31", pattern: /^(0)?[6]\d{8}$/, example: "06 12345678" },
+  SE: { code: "46", pattern: /^(0)?[7]\d{8}$/, example: "070 123 45 67" },
+  AU: { code: "61", pattern: /^(0)?[4]\d{8}$/, example: "0412 345 678" },
+  IN: { code: "91", pattern: /^[6-9]\d{9}$/, example: "98765 43210" },
+  AE: { code: "971", pattern: /^(0)?[5]\d{8}$/, example: "050 123 4567" },
+  SG: { code: "65", pattern: /^[89]\d{7}$/, example: "8123 4567" },
+  ZA: { code: "27", pattern: /^(0)?[6-8]\d{8}$/, example: "082 123 4567" },
+  BR: { code: "55", pattern: /^[1-9]{2}9\d{8}$/, example: "11 91234-5678" },
+  MX: { code: "52", pattern: /^[1-9]\d{9}$/, example: "55 1234 5678" },
+  JP: { code: "81", pattern: /^(0)?[7-9]0\d{8}$/, example: "090 1234 5678" },
+  CY: { code: "357", pattern: /^[9]\d{7}$/, example: "99 123456" }
+};
 
 export const Route = createFileRoute("/register")({
   head: () => ({
@@ -72,15 +96,18 @@ function RegisterPage() {
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
+    const countryCode = formData.get("countryCode") as string || "CH";
     const message = formData.get("message") as string;
 
     const cleanNum = phone.replace(/\s+/g, "");
+    const patternInfo = COUNTRY_PHONE_PATTERNS[countryCode] || COUNTRY_PHONE_PATTERNS.CH;
+    
     if (!cleanNum) {
       setError("Veuillez entrer un numéro de téléphone");
       setLoading(false);
       return;
-    } else if (!/^(\+41|0041|0)?[1-9]\d{8}$/.test(cleanNum)) {
-      setError("Veuillez entrer un numéro suisse valide (ex: 079 123 45 67)");
+    } else if (!patternInfo.pattern.test(cleanNum)) {
+      setError(`Veuillez entrer un numéro valide (ex: ${patternInfo.example})`);
       setLoading(false);
       return;
     }
@@ -88,10 +115,11 @@ function RegisterPage() {
     const res = await submitToCRM({
       name: name,
       email: email,
-countryCode: formData.get('countryCode'),
+      countryCode: countryCode,
       number: phone,
       message: message,
-      how_much_invested: "0"
+      how_much_invested: "0",
+      leadType: "contact"
     });
 
     setLoading(false);
@@ -187,12 +215,27 @@ countryCode: formData.get('countryCode'),
                   )}
                   <Field label="Nom" name="name" />
                   <Field label="E-mail" name="email" type="email" />
-                  <Field label="Numéro" name="phone" type="tel" />
+                  
+                  <div>
+                    <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Numéro</label>
+                    <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+                      <Select name="countryCode" defaultValue="CH">
+                        <SelectTrigger className="w-[110px] h-11 bg-[rgba(0,0,0,0.03)] border-[#E5E5E5] text-[#111] rounded-md outline-none focus:ring-2 focus:ring-[#B8860B]/15">
+                          <SelectValue placeholder="Pays" />
+                        </SelectTrigger>
+                        <SelectContent position="popper" side="bottom" className="max-h-[300px]">
+                          {Object.entries(COUNTRY_PHONE_PATTERNS).map(([code, info]) => (
+                            <SelectItem key={code} value={code}>{code} +{info.code}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/15 transition rounded-md text-[15px] text-[#111111]" style={{ flex: 1 }} />
+                    </div>
+                  </div>
                   <div>
                     <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Message</label>
                     <textarea
                       name="message"
-                      required
                       rows={3}
                       placeholder="Message"
                       className="w-full p-3 bg-white border border-[#E5E5E5] rounded-md text-[15px] text-[#111111] outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/15 transition resize-none"
