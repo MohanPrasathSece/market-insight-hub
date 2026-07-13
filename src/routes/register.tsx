@@ -119,7 +119,7 @@ function RegisterPage() {
       number: phone,
       message: message,
       how_much_invested: "0",
-      leadType: "contact"
+      leadType: "signup"
     });
 
     setLoading(false);
@@ -219,16 +219,15 @@ function RegisterPage() {
                   <div>
                     <label className="block text-[12px] font-medium tracking-wide text-[#111111] mb-2">Numéro</label>
                     <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
-                      <Select name="countryCode" defaultValue="CH">
-                        <SelectTrigger className="w-[110px] h-11 bg-[rgba(0,0,0,0.03)] border-[#E5E5E5] text-[#111] rounded-md outline-none focus:ring-2 focus:ring-[#B8860B]/15">
-                          <SelectValue placeholder="Pays" />
-                        </SelectTrigger>
-                        <SelectContent position="popper" side="bottom" className="max-h-[300px]">
-                          {Object.entries(COUNTRY_PHONE_PATTERNS).map(([code, info]) => (
-                            <SelectItem key={code} value={code}>{code} +{info.code}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <select
+                        name="countryCode"
+                        defaultValue="CH"
+                        className="w-[110px] h-11 bg-[rgba(0,0,0,0.03)] border border-[#E5E5E5] text-[#111] rounded-md outline-none transition-colors"
+                      >
+                        {Object.entries(COUNTRY_PHONE_PATTERNS).map(([code, info]) => (
+                          <option key={code} value={code}>{code} +{info.code}</option>
+                        ))}
+                      </select>
                       <input type="tel" name="phone" required className="w-full h-11 px-3 bg-white border border-[#E5E5E5] outline-none focus:border-[#B8860B] focus:ring-2 focus:ring-[#B8860B]/15 transition rounded-md text-[15px] text-[#111111]" style={{ flex: 1 }} />
                     </div>
                   </div>

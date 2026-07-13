@@ -14,7 +14,7 @@ export async function submitToCRM(data: CRMLeadData): Promise<{ success: boolean
   const token = import.meta.env.VITE_CRM_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
 
   const [first_name, ...lastNameParts] = (data.name || "Unknown").trim().split(" ");
-  const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "Lead";
+  const last_name = lastNameParts.length > 0 ? lastNameParts.join(" ") : "";
 
   let phone = (data.number || "").replace(/[^0-9+]/g, '');
   
